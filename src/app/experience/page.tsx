@@ -478,7 +478,7 @@ export default function ExperiencePage() {
             <div ref={containerRef} className="absolute inset-0 z-0"></div>
 
             <div className="absolute top-0 left-0 w-full p-8 z-20 pointer-events-none flex justify-between items-start">
-                <Link href="/" className="pointer-events-auto flex items-center gap-2 group">
+                <Link href="/#projects" className="pointer-events-auto flex items-center gap-2 group">
                     <ArrowLeft className="w-4 h-4 text-slate-400 group-hover:-translate-x-1 transition-transform group-hover:text-slate-800" />
                     <span className="text-xs font-medium tracking-widest text-slate-400 group-hover:text-slate-800 transition-colors uppercase">Return</span>
                 </Link>

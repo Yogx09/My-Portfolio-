@@ -11,11 +11,11 @@ export default function Home() {
       {/* Animated Infinite Tech Marquee */}
       <TechMarquee />
 
-      {/* 3D Cinematic Navigation Grid */}
-      <NavigationParallax />
-
       {/* Main Dashboard -> Scroll naturally to enter */}
       <Projects />
+
+      {/* 3D Cinematic Navigation Grid - Navigation Section */}
+      <NavigationParallax />
     </main>
   );
 }

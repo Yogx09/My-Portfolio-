@@ -22,7 +22,7 @@ export default function SystemPage() {
                     The spatial coordinates have been locked, awaiting content integration.
                 </p>
 
-                <Link href="/" className="group flex items-center gap-3 px-8 py-4 bg-zinc-900 border border-zinc-800 hover:border-indigo-500 hover:bg-zinc-800 rounded-full transition-all duration-300">
+                <Link href="/#projects" className="group flex items-center gap-3 px-8 py-4 bg-zinc-900 border border-zinc-800 hover:border-indigo-500 hover:bg-zinc-800 rounded-full transition-all duration-300">
                     <ArrowLeft className="w-5 h-5 text-indigo-400 group-hover:-translate-x-1 transition-transform" />
                     <span className="font-bold tracking-[0.2em] text-xs uppercase">Return to Nexus</span>
                 </Link>

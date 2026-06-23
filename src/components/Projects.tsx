@@ -240,225 +240,204 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="relative w-full h-screen bg-[#020202] font-mono overflow-hidden select-none text-cyan-400 cursor-crosshair">
+    <section id="projects" className="relative w-full h-screen bg-[#030508] font-jakarta overflow-hidden select-none text-stone-200 cursor-crosshair">
       <style dangerouslySetInnerHTML={{__html: `
-        @keyframes glitch-anim {
-          0% { clip-path: inset(80% 0 0 0); transform: translate(-2px, 2px); }
-          20% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -2px); }
-          40% { clip-path: inset(40% 0 20% 0); transform: translate(-2px, 2px); }
-          60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
-          80% { clip-path: inset(15% 0 70% 0); transform: translate(-2px, 2px); }
-          100% { clip-path: inset(50% 0 30% 0); transform: translate(0); }
-        }
-        .glitch-text { position: relative; display: inline-block; }
-        .glitch-text::before, .glitch-text::after {
-          content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        }
-        .glitch-text::before { left: 2px; text-shadow: -1px 0 red; clip-path: inset(0); animation: glitch-anim 2s infinite linear alternate-reverse; }
-        .glitch-text::after { left: -2px; text-shadow: -1px 0 blue; clip-path: inset(0); animation: glitch-anim 3s infinite linear alternate-reverse; }
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;900&family=Orbitron:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
         
-        @keyframes scanline {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(100vh); }
-        }
-        .scan-bar { animation: scanline 4s linear infinite; }
+        .font-cinzel-dec { font-family: 'Cinzel Decorative', serif; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
 
         @keyframes data-stream {
           0% { background-position: 0 0; }
           100% { background-position: 0 100%; }
         }
-        
-        @keyframes radar-sweep {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
       `}} />
 
       {/* Super 3D WebGL Container */}
-      <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none mix-blend-screen"></div>
+      <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none mix-blend-screen opacity-90"></div>
 
-      {/* High-Tech Overlays */}
-      <div className="absolute inset-0 pointer-events-none z-10 opacity-10 bg-[linear-gradient(rgba(6,182,212,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-      <div className="absolute inset-0 pointer-events-none z-10 scan-bar h-32 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent"></div>
+      {/* Elegant Overlays */}
+      <div className="absolute inset-0 pointer-events-none z-10 bg-[radial-gradient(circle_at_center,transparent_0%,#030508_100%)] opacity-80"></div>
+      <div className="absolute inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
 
-      {/* Corner HUD Elements */}
-      <div className="absolute top-4 left-4 w-16 h-16 border-t border-l border-cyan-500/50 z-20 pointer-events-none"></div>
-      <div className="absolute top-4 right-4 w-16 h-16 border-t border-r border-cyan-500/50 z-20 pointer-events-none"></div>
-      <div className="absolute bottom-4 left-4 w-16 h-16 border-b border-l border-cyan-500/50 z-20 pointer-events-none"></div>
-      <div className="absolute bottom-4 right-4 w-16 h-16 border-b border-r border-cyan-500/50 z-20 pointer-events-none"></div>
+      {/* Corner Minimalist Accents */}
+      <div className="absolute top-8 left-8 w-8 h-8 border-t border-l border-white/20 z-20 pointer-events-none rounded-tl-xl"></div>
+      <div className="absolute top-8 right-8 w-8 h-8 border-t border-r border-white/20 z-20 pointer-events-none rounded-tr-xl"></div>
+      <div className="absolute bottom-8 left-8 w-8 h-8 border-b border-l border-white/20 z-20 pointer-events-none rounded-bl-xl"></div>
+      <div className="absolute bottom-8 right-8 w-8 h-8 border-b border-r border-white/20 z-20 pointer-events-none rounded-br-xl"></div>
 
-      {/* HUD DASHBOARD */}
-      <div className="relative z-20 w-full h-full flex flex-col p-6 md:p-8 max-w-[1800px] mx-auto pointer-events-auto">
+      {/* DASHBOARD CONTAINER */}
+      <div className="relative z-20 w-full h-full flex flex-col p-8 md:p-12 max-w-[1900px] mx-auto pointer-events-auto">
           
-          {/* HIGH-TECH HEADER */}
-          <header className="flex justify-between items-start border-b border-cyan-500/30 pb-4">
-              <div className="flex gap-4">
-                  <div className="flex flex-col gap-1 justify-center">
-                      <div className="h-1 w-12 bg-cyan-400 mb-1 shadow-[0_0_10px_#22d3ee]"></div>
-                      <div className="h-1 w-8 bg-cyan-500/50"></div>
-                      <div className="h-1 w-16 bg-cyan-500/30"></div>
+          {/* PREMIUM HEADER */}
+          <header className="flex justify-between items-start border-b border-white/10 pb-6 relative z-20">
+              <div className="flex gap-6 items-center">
+                  <div className="flex flex-col gap-1.5 justify-center">
+                      <div className="h-0.5 w-12 bg-amber-400 mb-1 shadow-[0_0_15px_rgba(251,191,36,0.6)]"></div>
+                      <div className="h-0.5 w-8 bg-white/40"></div>
+                      <div className="h-0.5 w-16 bg-white/20"></div>
                   </div>
                   <div>
-                      <div className="text-xl md:text-2xl font-black tracking-[0.3em] text-cyan-300 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] glitch-text" data-text="SYS_CORE_YOGESH">SYS_CORE_YOGESH</div>
-                      <div className="text-[9px] md:text-[10px] tracking-widest text-cyan-600 mt-1">INITIALIZATION SEQUENCE COMPLETE</div>
+                      <div className="text-xl md:text-3xl font-cinzel-dec font-bold tracking-[0.2em] text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">ASTRA<span className="text-amber-400">.SYS</span></div>
+                      <div className="text-[9px] md:text-[10px] tracking-widest text-stone-400 mt-1 font-orbitron uppercase">Core Initialized // Sinde Yogesh</div>
                   </div>
               </div>
               
-              <div className="flex flex-col items-end text-right">
-                  <div className="flex items-center gap-3 text-[10px] md:text-xs tracking-widest mb-1">
-                      <span className="text-cyan-700">STATUS:</span>
-                      <span className="text-amber-400 animate-pulse drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]">SYSTEM NOMINAL</span>
+              <div className="flex flex-col items-end text-right font-orbitron">
+                  <div className="flex items-center gap-3 text-[10px] md:text-xs tracking-[0.2em] mb-1">
+                      <span className="text-stone-500">NETWORK_STATE:</span>
+                      <span className="text-amber-400 animate-pulse drop-shadow-[0_0_10px_rgba(251,191,36,0.5)]">OPTIMAL</span>
                   </div>
-                  <div className="text-[9px] md:text-[10px] text-cyan-500 tracking-[0.2em]">{timeStr}</div>
-                  <div className="flex gap-1 mt-2">
-                      {[...Array(10)].map((_, i) => (
-                          <div key={i} className="w-1 md:w-1.5 h-2 md:h-3 bg-cyan-500/40" style={{ animation: `pulse ${Math.random() * 2 + 1}s infinite` }}></div>
-                      ))}
-                  </div>
+                  <div className="text-[10px] md:text-[12px] text-stone-300 tracking-[0.3em] mt-1">{timeStr}</div>
               </div>
           </header>
 
-          <main className="flex-1 flex flex-col lg:flex-row mt-8 gap-8 min-h-0">
+          <main className="flex-1 flex flex-col lg:flex-row mt-10 gap-10 min-h-0">
               
-              {/* LEFT DATABANK */}
-              <aside className="hidden lg:flex w-64 flex-col gap-6">
-                  <div className="border border-cyan-500/30 bg-cyan-950/20 p-5 backdrop-blur-md relative group hover:border-cyan-400 transition-colors duration-300 shadow-[inset_0_0_20px_rgba(6,182,212,0.1)]">
-                      <div className="absolute top-0 left-0 w-2 h-2 bg-cyan-400 shadow-[0_0_5px_#22d3ee]"></div>
-                      <div className="absolute bottom-0 right-0 w-2 h-2 bg-cyan-400 shadow-[0_0_5px_#22d3ee]"></div>
-                      <div className="text-[10px] text-cyan-500 tracking-[0.3em] mb-6 border-b border-cyan-500/30 pb-2">/// NAV_PROTOCOL</div>
-                      <nav className="flex flex-col gap-4">
+              {/* LEFT NAVIGATION PANE */}
+              <aside className="hidden lg:flex w-72 flex-col gap-8 relative z-20">
+                  <div className="bg-white/[0.02] border border-white/[0.05] rounded-3xl p-6 backdrop-blur-md relative group hover:border-amber-400/30 transition-colors duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+                      <div className="text-[10px] text-amber-500 tracking-[0.3em] mb-6 font-orbitron border-b border-white/[0.05] pb-3">/// DIRECTORY</div>
+                      <nav className="flex flex-col gap-5">
                           {[
-                              { label: 'MAIN_HUB', link: '#' },
-                              { label: 'ABOUT_ME', link: '/about' },
-                              { label: 'SKILLS_DB', link: '/skills' },
-                              { label: 'ARCHIVES', link: '/projects' },
-                              { label: 'COMMS', link: '/contact' }
+                              { label: 'HOME', link: '#' },
+                              { label: 'ABOUT', link: '/about' },
+                              { label: 'SKILLS', link: '/skills' },
+                              { label: 'PROJECTS', link: '/projects' },
+                              { label: 'CONTACT', link: '/contact' }
                           ].map((item, i) => (
-                              <a key={i} href={item.link} className="flex items-center gap-3 text-xs tracking-[0.2em] text-cyan-400/70 hover:text-cyan-300 hover:translate-x-2 transition-all group/link">
-                                  <span className="w-4 h-[1px] bg-cyan-500/50 group-hover/link:w-8 group-hover/link:bg-cyan-400 transition-all duration-300"></span>
-                                  <span className="font-bold opacity-50 group-hover/link:opacity-100">0{i+1}</span>
+                              <a key={i} href={item.link} className="flex items-center gap-4 text-xs tracking-[0.2em] text-stone-400 hover:text-white hover:translate-x-3 transition-all duration-300 group/link font-jakarta">
+                                  <span className="w-6 h-[1px] bg-white/20 group-hover/link:w-10 group-hover/link:bg-amber-400 transition-all duration-500"></span>
+                                  <span className="font-orbitron text-[9px] opacity-40 group-hover/link:opacity-100 group-hover/link:text-amber-400">0{i+1}</span>
                                   {item.label}
                               </a>
                           ))}
                       </nav>
                   </div>
                   
-                  <div className="border border-cyan-500/30 bg-cyan-950/20 p-5 backdrop-blur-md flex-1 overflow-hidden relative shadow-[inset_0_0_20px_rgba(6,182,212,0.1)]">
-                       <div className="absolute inset-0 opacity-20 animate-[data-stream_10s_linear_infinite]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(6,182,212,0.2) 2px, rgba(6,182,212,0.2) 4px)' }}></div>
-                       <div className="relative z-10">
-                           <div className="text-[10px] text-cyan-500 tracking-[0.3em] mb-4 border-b border-cyan-500/30 pb-2">/// SYSTEM_LOGS</div>
-                           <div className="flex flex-col gap-2 text-[9px] text-cyan-500/60 font-mono">
-                               <div className="animate-pulse">&gt; Loading core modules...</div>
-                               <div>&gt; Injecting dependencies... OK</div>
-                               <div className="text-amber-500">&gt; Warning: High power draw detected</div>
-                               <div>&gt; Establishing neural link...</div>
-                               <div className="text-cyan-300 drop-shadow-[0_0_5px_#22d3ee]">&gt; Link established.</div>
-                               <div className="mt-2 text-cyan-700">_awaiting_input</div>
+                  <div className="bg-white/[0.02] border border-white/[0.05] rounded-3xl p-6 backdrop-blur-md flex-1 relative shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-hidden">
+                       <div className="absolute inset-0 opacity-10 animate-[data-stream_20s_linear_infinite]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px)' }}></div>
+                       <div className="relative z-10 font-orbitron">
+                           <div className="text-[10px] text-amber-500 tracking-[0.3em] mb-4 border-b border-white/[0.05] pb-3">/// TERMINAL</div>
+                           <div className="flex flex-col gap-3 text-[10px] text-stone-400/80 leading-relaxed">
+                               <div className="animate-pulse text-amber-400/80">&gt; Authenticating...</div>
+                               <div>&gt; Loading neural pathways... <span className="text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]">OK</span></div>
+                               <div>&gt; Rendering 3D environment... <span className="text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]">OK</span></div>
+                               <div className="text-amber-300 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)] mt-4 border-l-2 border-amber-400 pl-3">&gt; Access Granted.</div>
                            </div>
                        </div>
                   </div>
               </aside>
 
-              {/* CENTER HIGH-TECH HERO */}
-              <section className="flex-1 flex flex-col justify-center items-center relative text-center">
-                  
-                  {/* Huge Targeting Reticle Behind Text */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none opacity-[0.15]">
-                      <div className="absolute inset-0 border border-cyan-400/30 rounded-full animate-[spin_40s_linear_infinite]"></div>
-                      <div className="absolute inset-4 border border-dashed border-cyan-400/50 rounded-full animate-[spin_30s_linear_infinite_reverse]"></div>
-                      <div className="absolute inset-16 border border-dotted border-cyan-400/50 rounded-full animate-[spin_20s_linear_infinite]"></div>
-                      <div className="absolute top-1/2 left-0 w-full h-[1px] bg-cyan-400/30"></div>
-                      <div className="absolute top-0 left-1/2 w-[1px] h-full bg-cyan-400/30"></div>
+              {/* CENTER HERO */}
+              <section className="flex-1 flex flex-col justify-center items-center relative text-center z-20">
+                  <div className="bg-white/[0.03] border border-white/[0.05] rounded-full px-6 py-2 mb-10 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                      <span className="text-[10px] tracking-[0.4em] text-stone-300 font-orbitron">CREATIVE DEVELOPER</span>
                   </div>
 
-                  <div className="border border-cyan-500/40 bg-cyan-950/60 px-8 py-2 mb-8 backdrop-blur-md shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-                      <span className="text-[10px] md:text-xs tracking-[0.5em] text-cyan-300 font-bold">ACCESS GRANTED</span>
-                  </div>
-
-                  <h1 className="text-5xl md:text-7xl lg:text-[7rem] font-black tracking-tighter leading-none mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white via-cyan-100 to-cyan-600 drop-shadow-[0_0_25px_rgba(34,211,238,0.6)] glitch-text uppercase" data-text="SINDE YOGESH">
-                      SINDE YOGESH
+                  <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-cinzel-dec font-black tracking-tighter leading-none mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white via-stone-200 to-stone-600 drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] uppercase">
+                      YOGESH
                   </h1>
                   
-                  <div className="flex items-center gap-4 mb-12 w-full max-w-2xl">
-                      <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-cyan-500/80"></div>
-                      <h2 className="text-xs md:text-sm tracking-[0.5em] text-amber-400 font-bold drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]">CREATIVE ENGINEER</h2>
-                      <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-cyan-500/80"></div>
+                  <div className="flex items-center gap-6 mb-12 w-full max-w-xl">
+                      <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-amber-500/50"></div>
+                      <h2 className="text-xs md:text-sm tracking-[0.6em] text-amber-400 font-orbitron font-bold drop-shadow-[0_0_15px_rgba(251,191,36,0.4)]">3D ENGINEER</h2>
+                      <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-amber-500/50"></div>
                   </div>
 
-                  <p className="max-w-xl text-xs md:text-sm leading-relaxed text-cyan-100/80 mb-12 tracking-[0.1em] font-light border-l-2 border-cyan-500/50 pl-6 text-left bg-cyan-950/20 py-2 backdrop-blur-sm">
-                      &gt; INITIATING CREATIVE OVERRIDE... <br/><br/>
-                      &gt; BUILDING HIGH-PERFORMANCE DIGITAL REALITIES WITH IMMERSIVE 3D TECHNOLOGIES AND ADVANCED WEB ENGINEERING.
+                  <p className="max-w-2xl text-sm md:text-base leading-relaxed text-stone-300/90 mb-12 font-jakarta font-light text-center">
+                      Merging cinematic aesthetics with modern web technologies. <br/>
+                      Building high-performance digital realities and immersive 3D experiences.
                   </p>
 
-                  <div className="flex gap-6">
-                      <a href="/projects" className="relative px-8 py-4 bg-cyan-500/10 border border-cyan-400 text-cyan-300 tracking-[0.3em] text-[10px] font-bold uppercase hover:bg-cyan-400 hover:text-black transition-all duration-300 group overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)]">
-                          <div className="absolute inset-0 bg-cyan-400 w-0 group-hover:w-full transition-all duration-300 ease-out z-0"></div>
-                          <span className="relative z-10 group-hover:text-black">ACCESS ARCHIVES</span>
+                  <div className="flex gap-8 font-orbitron">
+                      <a href="/projects" className="relative px-10 py-4 bg-amber-500/10 border border-amber-500/50 rounded-full text-amber-400 tracking-[0.3em] text-[10px] font-bold uppercase hover:bg-amber-500 hover:text-black hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all duration-500 group overflow-hidden">
+                          <span className="relative z-10">EXPLORE WORK</span>
                       </a>
-                      <a href="/contact" className="px-8 py-4 border border-cyan-500/40 bg-cyan-950/30 backdrop-blur-md text-cyan-500 tracking-[0.3em] text-[10px] font-bold uppercase hover:border-cyan-400 hover:text-cyan-300 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-                          INITIATE COMMS
+                      <a href="/contact" className="px-10 py-4 border border-white/10 rounded-full bg-white/[0.02] backdrop-blur-md text-white tracking-[0.3em] text-[10px] font-bold uppercase hover:border-white/40 hover:bg-white/10 transition-all duration-500">
+                          CONTACT ME
                       </a>
                   </div>
               </section>
 
-              {/* RIGHT RADAR / STATUS */}
-              <aside className="hidden lg:flex w-72 flex-col justify-between items-end pb-8">
+              {/* RIGHT PANEL (Diamond Navigation Matrix + Radar) */}
+              <aside className="hidden lg:flex w-72 flex-col justify-start items-center relative z-20 pb-8">
                   
-                  <div className="w-full border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md p-5 flex flex-col gap-5 shadow-[inset_0_0_20px_rgba(6,182,212,0.1)]">
-                      <div className="absolute top-0 right-0 w-2 h-2 bg-cyan-400 shadow-[0_0_5px_#22d3ee]"></div>
-                      <div className="flex justify-between items-end border-b border-cyan-500/30 pb-2">
-                          <span className="text-[10px] tracking-[0.3em] text-cyan-500">/// SYS_METRICS</span>
-                          <span className="text-xs font-bold text-cyan-300">100%</span>
-                      </div>
-                      
-                      <div className="flex flex-col gap-2">
-                          <div className="flex justify-between text-[9px] text-cyan-400 tracking-widest">
-                              <span>PROJECTS_DEPLOYED</span>
-                              <span className="text-amber-400 font-bold">25+</span>
-                          </div>
-                          <div className="w-full h-[2px] bg-cyan-950"><div className="w-[85%] h-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]"></div></div>
-                      </div>
-                      
-                      <div className="flex flex-col gap-2">
-                          <div className="flex justify-between text-[9px] text-cyan-400 tracking-widest">
-                              <span>YEARS_EXP</span>
-                              <span className="text-amber-400 font-bold">02+</span>
-                          </div>
-                          <div className="w-full h-[2px] bg-cyan-950"><div className="w-[40%] h-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]"></div></div>
-                      </div>
-                      
-                      <div className="flex flex-col gap-2">
-                          <div className="flex justify-between text-[9px] text-cyan-400 tracking-widest">
-                              <span>CLIENT_SATISFACTION</span>
-                              <span className="text-amber-400 font-bold">15+</span>
-                          </div>
-                          <div className="w-full h-[2px] bg-cyan-950"><div className="w-[60%] h-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]"></div></div>
+                  {/* Background Orbital Rings - Elegant Gold/White */}
+                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] border border-white/[0.03] rounded-full pointer-events-none"></div>
+                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] border border-amber-500/10 rounded-full pointer-events-none animate-[spin_60s_linear_infinite_reverse]"></div>
+                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] border border-white/[0.05] rounded-full border-dashed pointer-events-none animate-[spin_40s_linear_infinite]"></div>
+
+                  {/* Diamond Grid Container */}
+                  <div className="relative w-[220px] h-[220px] mx-auto z-10 mb-auto mt-[20%] drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+                      <div className="absolute inset-0 transform rotate-45 grid grid-cols-2 gap-3">
+                          
+                          {/* TOP DIAMOND (About Me) */}
+                          <a href="/about" className="group relative w-full h-full border border-white/20 bg-white/[0.02] backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-2xl">
+                              <div className="-rotate-45 flex flex-col items-center gap-2">
+                                  <svg className="w-5 h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                                  <span className="font-orbitron font-bold text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em] text-center">ABOUT</span>
+                              </div>
+                          </a>
+
+                          {/* RIGHT DIAMOND (Experience) */}
+                          <a href="/experience" className="group relative w-full h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)]">
+                              <div className="-rotate-45 flex flex-col items-center gap-2">
+                                  <svg className="w-5 h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                                  <span className="font-orbitron font-bold text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em]">EXP</span>
+                              </div>
+                          </a>
+
+                          {/* LEFT DIAMOND (Projects) */}
+                          <a href="/projects" className="group relative w-full h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)]">
+                              <div className="-rotate-45 flex flex-col items-center gap-2">
+                                  <svg className="w-5 h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                                  <span className="font-orbitron font-bold text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em]">WORK</span>
+                              </div>
+                          </a>
+
+                          {/* BOTTOM DIAMOND (Skills) */}
+                          <a href="/skills" className="group relative w-full h-full border border-white/20 bg-white/[0.02] backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-2xl">
+                              <div className="-rotate-45 flex flex-col items-center gap-2">
+                                  <svg className="w-5 h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                                  <span className="font-orbitron font-bold text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em]">SKILLS</span>
+                              </div>
+                          </a>
+
                       </div>
                   </div>
 
-                  {/* High-tech Radar Map */}
-                  <div className="relative w-56 h-56 border border-cyan-500/40 rounded-full flex items-center justify-center bg-cyan-950/20 backdrop-blur-md overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.2)]">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.2)_0%,transparent_70%)]"></div>
-                      <div className="absolute inset-4 border border-cyan-500/20 rounded-full"></div>
-                      <div className="absolute inset-10 border border-dashed border-cyan-500/30 rounded-full animate-[spin_15s_linear_infinite]"></div>
-                      <div className="absolute inset-16 border border-dotted border-cyan-500/40 rounded-full animate-[spin_10s_linear_infinite_reverse]"></div>
-                      <div className="absolute top-1/2 left-0 w-full h-[1px] bg-cyan-500/30"></div>
-                      <div className="absolute top-0 left-1/2 w-[1px] h-full bg-cyan-500/30"></div>
-                      {/* Radar sweep */}
-                      <div className="absolute top-0 left-1/2 w-1/2 h-1/2 bg-[conic-gradient(from_0deg,transparent_0deg,rgba(6,182,212,0.4)_90deg,transparent_90deg)] origin-bottom-left animate-[radar-sweep_3s_linear_infinite]"></div>
-                      <div className="absolute top-1/4 right-1/4 w-2.5 h-2.5 bg-amber-400 rounded-full shadow-[0_0_12px_#fbbf24] animate-pulse"></div>
-                      <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-cyan-300 rounded-full shadow-[0_0_8px_#22d3ee]"></div>
-                      <div className="absolute top-[60%] right-[30%] w-1 h-1 bg-cyan-400 rounded-full shadow-[0_0_5px_#22d3ee]"></div>
+                  {/* Elegant Orbital Radar Globe */}
+                  <div className="relative mt-auto w-44 h-44 flex items-center justify-center opacity-100 group cursor-crosshair drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]">
+                      <div className="absolute inset-0 border border-white/[0.05] rounded-full"></div>
+                      <div className="absolute inset-3 border border-dashed border-amber-500/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                      <div className="absolute inset-6 border border-dotted border-white/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                      
+                      <div className="absolute inset-10 rounded-full border border-amber-500/40 overflow-hidden bg-[#030508]/80 shadow-[0_0_30px_rgba(251,191,36,0.15)] backdrop-blur-md">
+                          <div className="w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.15),transparent_70%)]"></div>
+                          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-amber-400/50 shadow-[0_0_10px_#fbbf24] animate-[pulse_3s_linear_infinite]"></div>
+                          <div className="absolute top-0 left-1/2 w-[1px] h-full bg-amber-400/50 shadow-[0_0_10px_#fbbf24] animate-[pulse_3s_linear_infinite]" style={{animationDelay: '1.5s'}}></div>
+                      </div>
+                      
+                      <div className="absolute -left-24 bottom-1/2 translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 font-orbitron text-[8px] text-amber-400 tracking-[0.2em] text-right">
+                          <div className="font-bold">SYSTEM_V2</div>
+                          <div className="text-stone-400 mt-1">SYNC: 100%</div>
+                      </div>
                   </div>
 
               </aside>
           </main>
 
-          <footer className="mt-auto border-t border-cyan-500/30 pt-4 flex justify-between text-[9px] tracking-[0.3em] text-cyan-600 uppercase">
-              <div>SECURE CONNECTION // ENCRYPTED // 2025</div>
-              <div className="flex gap-6">
-                  <span className="text-cyan-400 drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">CORE.JS</span>
-                  <span className="text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]">THREE.SYS</span>
+          {/* FOOTER */}
+          <footer className="mt-auto border-t border-white/[0.05] pt-6 pb-2 flex justify-between items-center text-[10px] font-orbitron tracking-widest text-stone-500 relative z-20">
+              <div>&copy; 2025 SINDE YOGESH.</div>
+              
+              <div className="flex gap-8">
+                  <a href="#" className="hover:text-amber-400 hover:tracking-[0.3em] transition-all duration-300">GITHUB</a>
+                  <a href="#" className="hover:text-amber-400 hover:tracking-[0.3em] transition-all duration-300">LINKEDIN</a>
+                  <a href="#" className="hover:text-amber-400 hover:tracking-[0.3em] transition-all duration-300">EMAIL</a>
               </div>
           </footer>
       </div>

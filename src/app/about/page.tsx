@@ -68,7 +68,7 @@ export default function AboutPage() {
 
       {/* Header */}
       <header className="relative z-20 w-full p-8 flex justify-between items-center">
-        <a href="/" className="group flex items-center gap-3 text-xs font-mono tracking-widest text-indigo-400 hover:text-amber-400 transition-colors">
+        <a href="/#projects" className="group flex items-center gap-3 text-xs font-mono tracking-widest text-indigo-400 hover:text-amber-400 transition-colors">
           <span className="w-6 h-[1px] bg-indigo-400 group-hover:bg-amber-400 group-hover:w-10 transition-all duration-300 shadow-[0_0_10px_currentColor]"></span>
           [ RETURN_TO_PORTAL ]
         </a>
