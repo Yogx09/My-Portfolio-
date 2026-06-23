@@ -13,7 +13,7 @@ export default function ScrollySection() {
   const [imagesReady, setImagesReady] = useState(false);
   const [loadProgress, setLoadProgress] = useState(0);
   
-  const [exitPreloader, setExitPreloader] = useState(true);
+  const [exitPreloader, setExitPreloader] = useState(false);
 
   const introProgress = useMotionValue(79); // Start at last frame
 
@@ -123,7 +123,7 @@ export default function ScrollySection() {
     // the image un-sticks, and the rest of the page (Projects section) flows up immediately.
     <div ref={containerRef} className="relative h-[200vh] w-full bg-[#121212]">
       
-      {/* Horizontal Parting Portal Gates Preloader - Bypassed */}
+      {/* Horizontal Parting Portal Gates Preloader */}
       <AnimatePresence>
         {!exitPreloader && (
           <motion.div 
@@ -147,6 +147,15 @@ export default function ScrollySection() {
               }}
               className="w-1/2 h-full bg-[#030305] border-l border-teal-500/10"
             />
+
+            {/* The Sanskrit Astra Boot Sequence Overlay with high-fidelity depth-of-field dissolve */}
+            <motion.div 
+              exit={{ opacity: 0, scale: 0.95, filter: "blur(15px)" }}
+              transition={{ duration: 0.8, ease: [0.87, 0, 0.13, 1] }}
+              className="absolute inset-0 z-10 pointer-events-auto"
+            >
+              <SanskritAstraLoader onComplete={() => setExitPreloader(true)} />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

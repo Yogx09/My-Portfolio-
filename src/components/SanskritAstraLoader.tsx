@@ -671,8 +671,8 @@ export default function SanskritAstraLoader({ onComplete }: SanskritAstraLoaderP
         bootText.innerText = "[ ALIGNING SACRED GEOMETRIES ]";
       }
 
-      // Settle loading timeline speed strictly at 55ms
-      const cycleSpeed = 55; 
+      // Settle loading timeline speed strictly at 20ms for much faster sequence
+      const cycleSpeed = 20; 
       const words = ["DREAM", "BUILD", "CREATE"]; 
       const wordData = words.map((w, i) => ({
         first: w.charAt(0), 
@@ -683,7 +683,7 @@ export default function SanskritAstraLoader({ onComplete }: SanskritAstraLoaderP
 
       let activeStep = 0;
       let stepCycle = 0;
-      const cyclesToLock = 12; 
+      const cyclesToLock = 5; 
 
       animationInterval = setInterval(() => {
         
@@ -787,14 +787,14 @@ export default function SanskritAstraLoader({ onComplete }: SanskritAstraLoaderP
       setBootComplete(true);
       setTimeout(() => {
         onComplete();
-      }, 800);
+      }, 200);
     };
 
     // Auto start preloader steps
     const timer = setTimeout(() => {
       resetChainVisuals();
       startStepAnimation();
-    }, 800);
+    }, 200);
 
     return () => {
       clearTimeout(timer);
