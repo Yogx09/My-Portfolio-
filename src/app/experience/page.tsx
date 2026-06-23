@@ -238,11 +238,36 @@ export default function ExperiencePage() {
             mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
         };
 
+        // --- Mobile Touch Support ---
+        let touchStartY = 0;
+        const handleTouchStart = (e: TouchEvent) => {
+            if (isEntering) return;
+            touchStartY = e.touches[0].clientY;
+            
+            // Update mouse coordinates for tap interactions
+            mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
+        };
+
+        const handleTouchMove = (e: TouchEvent) => {
+            if (isEntering) return;
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchStartY - touchY;
+            targetZ += deltaY * 0.06; // Adjust swipe sensitivity
+            touchStartY = touchY;
+        };
+
         const handleMouseClick = (e: MouseEvent) => {
             if (isEntering) return;
             
-            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+            // On mobile, the click event provides clientX/Y, but we fall back to touch coords if needed
+            const clientX = e.clientX ?? (e as any).touches?.[0]?.clientX;
+            const clientY = e.clientY ?? (e as any).touches?.[0]?.clientY;
+            
+            if (clientX !== undefined && clientY !== undefined) {
+                mouse.x = (clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(clientY / window.innerHeight) * 2 + 1;
+            }
             
             raycaster.setFromCamera(mouse, camera);
             const intersects = raycaster.intersectObjects(scene.children, true);
@@ -268,6 +293,8 @@ export default function ExperiencePage() {
 
         window.addEventListener("wheel", handleWheel);
         window.addEventListener("mousemove", handleMouseMove);
+        window.addEventListener("touchstart", handleTouchStart);
+        window.addEventListener("touchmove", handleTouchMove, { passive: true });
         window.addEventListener("click", handleMouseClick);
         const closeBtn = document.getElementById("close-button");
         if (closeBtn) closeBtn.addEventListener("click", handleClose);
