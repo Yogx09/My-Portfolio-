@@ -106,11 +106,21 @@ export default function AgencyShowcase() {
       {/* ========================================= */}
       <section className="relative w-full min-h-screen border-b border-white/20 flex flex-col md:flex-row">
         
-        {/* LEFT SIDE: BENTO GRID OF IMAGES */}
-        <div className="w-full md:w-1/2 border-r border-white/20 p-6 md:p-10 flex flex-col">
-          <div className="grid grid-cols-2 grid-rows-3 gap-6 h-full min-h-[700px]">
+        {/* LEFT SIDE: BENTO GRID OF IMAGES (MOBILE SWIPE GALLERY) */}
+        <div className="w-full md:w-1/2 border-r border-white/20 py-8 pl-6 md:p-10 flex flex-col overflow-hidden">
+          {/* Mobile indicator */}
+          <div className="md:hidden flex items-center justify-between pr-6 mb-4 text-[10px] text-white/50 font-orbitron tracking-widest uppercase">
+             <span>Swipe to Explore</span>
+             <div className="flex gap-1 animate-pulse">
+               <div className="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+               <div className="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+               <div className="w-1.5 h-1.5 rounded-full bg-white/80"></div>
+             </div>
+          </div>
+          
+          <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none pb-6 md:pb-0 pr-6 md:pr-0 hide-scrollbar grid-cols-2 grid-rows-3 gap-4 md:gap-6 md:h-full md:min-h-[700px] w-full items-stretch">
              {/* AgroVise (CNN) */}
-             <div className="group col-span-1 row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 relative cursor-pointer border border-white/10 hover:border-emerald-400/50">
+             <div className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 relative cursor-pointer border border-white/10 hover:border-emerald-400/50">
                <div className="absolute inset-0 bg-gradient-to-t from-[#5a0b91]/90 to-transparent z-10"></div>
                <img src="https://images.unsplash.com/photo-1530836369250-ef71a3a5a4fda?q=80&w=800&auto=format&fit=crop" alt="AgroVise Plant AI" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                <div className="absolute bottom-4 left-4 z-20 flex flex-col">
@@ -120,13 +130,13 @@ export default function AgencyShowcase() {
              </div>
              
              {/* ESP32 Safety Systems */}
-             <div className="group col-span-1 row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#7010b3] flex flex-col items-center justify-center relative cursor-pointer border border-white/10 hover:border-amber-400/50">
+             <div className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#7010b3] flex flex-col items-center justify-center relative cursor-pointer border border-white/10 hover:border-amber-400/50">
                <ShieldAlert className="w-16 h-16 text-amber-400 mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
                <div className="font-orbitron font-bold text-sm tracking-widest text-amber-400 text-center">ESP32 SAFETY<br/><span className="text-[9px] text-amber-400/70">IOT SYSTEMS</span></div>
              </div>
              
              {/* Arch Linux AI Assistant */}
-             <div className="group col-span-2 row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#0d1117] flex flex-col items-center justify-center p-8 relative cursor-pointer border border-white/10 hover:border-cyan-400/50">
+             <div className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-2 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#0d1117] flex flex-col items-center justify-center p-8 relative cursor-pointer border border-white/10 hover:border-cyan-400/50">
                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1600&auto=format&fit=crop')] opacity-20 bg-cover bg-center group-hover:opacity-40 transition-opacity duration-500"></div>
                <Terminal className="w-12 h-12 text-cyan-400 mb-3 relative z-10 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)] group-hover:scale-110 transition-transform duration-500" />
                <div className="text-3xl md:text-5xl font-black text-cyan-300 drop-shadow-[0_0_20px_rgba(34,211,238,0.6)] group-hover:scale-105 transition-transform duration-500 mb-2 relative z-10 font-orbitron">ARCH AI</div>
@@ -134,7 +144,7 @@ export default function AgencyShowcase() {
              </div>
              
              {/* Full-Stack Web (IBM) */}
-             <div className="group col-span-1 row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#5a0b91] flex items-end justify-center relative cursor-pointer border border-white/10 hover:border-purple-400/50">
+             <div className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#5a0b91] flex items-end justify-center relative cursor-pointer border border-white/10 hover:border-purple-400/50">
                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="Full Stack Code" className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
                <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
                  <Code2 className="w-12 h-12 text-purple-300 mb-2" />
@@ -143,7 +153,7 @@ export default function AgencyShowcase() {
              </div>
              
              {/* Hackathons & Cinematic Docs */}
-             <div className="group col-span-1 row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#8b14db] flex flex-col items-center justify-center relative cursor-pointer border border-white/10 hover:border-pink-400/50">
+             <div className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#8b14db] flex flex-col items-center justify-center relative cursor-pointer border border-white/10 hover:border-pink-400/50">
                <Film className="w-16 h-16 text-pink-300 mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
                <div className="font-orbitron font-bold text-sm tracking-widest text-pink-300 text-center">CINEMATIC<br/><span className="text-[9px] text-pink-300/70">AI DOCUMENTARIES</span></div>
              </div>

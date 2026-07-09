@@ -372,15 +372,15 @@ export default function Projects() {
       <div className="absolute bottom-8 right-8 w-8 h-8 border-b border-r border-white/20 z-20 pointer-events-none rounded-br-xl"></div>
 
       {/* DASHBOARD CONTAINER */}
-      <div className="relative z-20 w-full h-full flex flex-col p-8 md:p-12 max-w-[1900px] mx-auto pointer-events-auto">
+      <div className="relative w-full h-full flex flex-col max-w-[1900px] mx-auto pointer-events-auto">
           
-          {/* PREMIUM HEADER */}
+          {/* PREMIUM STICKY HEADER */}
           <motion.header 
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex justify-between items-start border-b border-white/10 pb-6 relative z-20"
+            className="flex justify-between items-start border-b border-white/10 pb-4 pt-6 px-8 md:px-12 md:pb-6 relative z-50 sticky top-0 bg-[#030508]/60 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
           >
               <div className="flex gap-6 items-center">
                   <div className="flex flex-col gap-1.5 justify-center">
@@ -394,16 +394,16 @@ export default function Projects() {
                   </div>
               </div>
               
-              <div className="flex flex-col items-end text-right font-orbitron">
+              <div className="flex flex-col items-end text-right font-orbitron hidden sm:flex">
                   <div className="flex items-center gap-3 text-[10px] md:text-xs tracking-[0.2em] mb-1">
                       <span className="text-stone-500">NETWORK_STATE:</span>
                       <span className="text-amber-400 animate-pulse drop-shadow-[0_0_10px_rgba(251,191,36,0.5)]">OPTIMAL</span>
                   </div>
-                  <div className="text-[10px] md:text-[12px] text-stone-300 tracking-[0.3em] mt-1">{timeStr}</div>
+                  <div className="text-[10px] md:text-[12px] text-stone-300 tracking-[0.3em] mt-1">{dateStr} // {timeStr}</div>
               </div>
           </motion.header>
 
-          <main className="flex-1 flex flex-col lg:flex-row mt-10 gap-10 min-h-0">
+          <main className="flex-1 flex flex-col lg:flex-row mt-6 md:mt-10 gap-10 min-h-0 px-8 md:px-12">
               
               {/* LEFT NAVIGATION PANE */}
               <motion.aside 
@@ -455,7 +455,7 @@ export default function Projects() {
                 className="flex-1 flex flex-col justify-center items-center relative text-center z-20 pr-14 lg:pr-0"
               >
                   {/* Cyber-Avatar Container */}
-                  <div className="relative mb-8 w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-amber-500/30 p-1 group shadow-[0_0_30px_rgba(251,191,36,0.1)]">
+                  <div className="relative mb-8 w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-amber-500/30 p-1 group shadow-[0_0_30px_rgba(251,191,36,0.1)] animate-[float_6s_ease-in-out_infinite]">
                       <div className="absolute inset-0 rounded-full border border-amber-400/50 animate-[spin_10s_linear_infinite] border-dashed"></div>
                       <div className="absolute inset-[-10px] rounded-full border border-white/10 animate-[spin_15s_linear_infinite_reverse] border-dotted"></div>
                       <div className="w-full h-full rounded-full overflow-hidden relative z-10 bg-[#030508]/80 backdrop-blur-md">
@@ -483,11 +483,13 @@ export default function Projects() {
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 font-orbitron">
-                      <a href="/projects" className="relative px-8 py-3 md:px-10 md:py-4 bg-amber-500/10 border border-amber-500/50 rounded-full text-amber-400 tracking-[0.3em] text-[9px] md:text-[10px] font-bold uppercase hover:bg-amber-500 hover:text-black hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all duration-500 group overflow-hidden">
+                      <a href="/projects" className="relative px-8 py-3 md:px-10 md:py-4 bg-amber-500/10 border border-amber-500/50 rounded-full text-amber-400 tracking-[0.3em] text-[9px] md:text-[10px] font-bold uppercase hover:bg-amber-500 hover:text-black hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all duration-500 group overflow-hidden shadow-[0_0_15px_rgba(251,191,36,0.2)]">
                           <span className="relative z-10">EXPLORE WORK</span>
+                          <div className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 animate-[shimmer_3s_infinite]"></div>
                       </a>
-                      <a href="/contact" className="px-8 py-3 md:px-10 md:py-4 border border-white/10 rounded-full bg-white/[0.02] backdrop-blur-md text-white tracking-[0.3em] text-[9px] md:text-[10px] font-bold uppercase hover:border-white/40 hover:bg-white/10 transition-all duration-500">
-                          CONTACT ME
+                      <a href="/contact" className="relative px-8 py-3 md:px-10 md:py-4 border border-white/10 rounded-full bg-white/[0.02] backdrop-blur-md text-white tracking-[0.3em] text-[9px] md:text-[10px] font-bold uppercase hover:border-white/40 hover:bg-white/10 transition-all duration-500 overflow-hidden group">
+                          <span className="relative z-10">CONTACT ME</span>
+                          <div className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 animate-[shimmer_4s_infinite_1s]"></div>
                       </a>
                   </div>
               </motion.section>
@@ -511,7 +513,7 @@ export default function Projects() {
                       <div className="lg:absolute lg:inset-0 lg:transform lg:rotate-45 flex flex-col lg:grid lg:grid-cols-2 gap-3">
                           
                           {/* TOP DIAMOND (About Me) */}
-                          <a href="/about" className="group relative w-11 h-11 lg:w-full lg:h-full border border-white/20 bg-black/40 backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl transform rotate-45 lg:rotate-0">
+                          <a href="/about" className="group relative w-11 h-11 lg:w-full lg:h-full border border-white/20 bg-black/40 backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl transform rotate-45 lg:rotate-0 shadow-[0_0_15px_rgba(255,255,255,0.05)] animate-[pulse-border_4s_infinite]">
                               <div className="-rotate-45 flex flex-col items-center lg:gap-2">
                                   <svg className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                                   <span className="font-orbitron font-bold text-[5px] lg:text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em] text-center mt-0.5 lg:mt-0">ABOUT</span>
@@ -519,7 +521,7 @@ export default function Projects() {
                           </a>
 
                           {/* RIGHT DIAMOND (Experience) */}
-                          <a href="/experience" className="group relative w-11 h-11 lg:w-full lg:h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)] transform rotate-45 lg:rotate-0">
+                          <a href="/experience" className="group relative w-11 h-11 lg:w-full lg:h-full border border-amber-500/40 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.1),0_0_15px_rgba(251,191,36,0.2)] transform rotate-45 lg:rotate-0 animate-[pulse-border-amber_4s_infinite_1s]">
                               <div className="-rotate-45 flex flex-col items-center lg:gap-2">
                                   <svg className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
                                   <span className="font-orbitron font-bold text-[5px] lg:text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em] mt-0.5 lg:mt-0">EXP</span>
@@ -527,7 +529,7 @@ export default function Projects() {
                           </a>
 
                           {/* LEFT DIAMOND (Projects) */}
-                          <a href="/projects" className="group relative w-11 h-11 lg:w-full lg:h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)] transform rotate-45 lg:rotate-0">
+                          <a href="/projects" className="group relative w-11 h-11 lg:w-full lg:h-full border border-amber-500/40 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.1),0_0_15px_rgba(251,191,36,0.2)] transform rotate-45 lg:rotate-0 animate-[pulse-border-amber_4s_infinite_2s]">
                               <div className="-rotate-45 flex flex-col items-center lg:gap-2">
                                   <svg className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
                                   <span className="font-orbitron font-bold text-[5px] lg:text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em] mt-0.5 lg:mt-0">WORK</span>
@@ -535,7 +537,7 @@ export default function Projects() {
                           </a>
 
                           {/* BOTTOM DIAMOND (Skills) */}
-                          <a href="/skills" className="group relative w-11 h-11 lg:w-full lg:h-full border border-white/20 bg-black/40 backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl transform rotate-45 lg:rotate-0">
+                          <a href="/skills" className="group relative w-11 h-11 lg:w-full lg:h-full border border-white/20 bg-black/40 backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl transform rotate-45 lg:rotate-0 shadow-[0_0_15px_rgba(255,255,255,0.05)] animate-[pulse-border_4s_infinite_3s]">
                               <div className="-rotate-45 flex flex-col items-center lg:gap-2">
                                   <svg className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                                   <span className="font-orbitron font-bold text-[5px] lg:text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em] mt-0.5 lg:mt-0">SKILLS</span>
