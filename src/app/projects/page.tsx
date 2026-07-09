@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import SmartCursor from "@/components/projects/SmartCursor";
 import FilmGrain from "@/components/projects/FilmGrain";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
@@ -108,7 +108,7 @@ const PROJECTS = [
   }
 ];
 
-const getAnimationVariants = (type: string) => {
+const getAnimationVariants = (type: string): Variants => {
   switch(type) {
     case "blur-slide":
       return {

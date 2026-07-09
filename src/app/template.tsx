@@ -1,15 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   // Awwwards-style vertical blinds transition
   const columns = 5;
   
-  const anim = {
+  const transitionConfig = { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const };
+  
+  const anim: Variants = {
     initial: { top: 0 },
-    animate: { top: "-100vh", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
-    exit: { top: "0vh", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }
+    animate: { top: "-100vh", transition: transitionConfig },
+    exit: { top: "0vh", transition: transitionConfig }
   };
 
   return (
@@ -23,7 +25,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{ ...anim.animate.transition, delay: i * 0.05 }}
+            transition={{ ...transitionConfig, delay: i * 0.05 }}
           />
         ))}
       </div>
