@@ -23,7 +23,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} h-full antialiased bg-[#121212] text-white selection:bg-white/30`}
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="min-h-full flex flex-col font-sans overflow-x-hidden w-full relative">
         <SmoothScroll>
           {children}
         </SmoothScroll>

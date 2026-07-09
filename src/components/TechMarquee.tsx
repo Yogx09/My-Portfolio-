@@ -27,7 +27,7 @@ const getIconUrl = (path: string) => `https://cdn.jsdelivr.net/gh/devicons/devic
 export default function TechMarquee() {
   return (
     <section 
-      className="relative w-full pt-10 md:pt-12 pb-32 z-30 flex flex-col justify-center perspective-1000 -mb-28"
+      className="relative w-full pt-10 md:pt-12 pb-32 z-30 flex flex-col justify-center perspective-1000 -mb-28 overflow-hidden"
       style={{
         // This mask creates the "liquid" feathering effect, making the component dissolve into the sections below it
         maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
