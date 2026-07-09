@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { motion } from "framer-motion";
+import AboutStockPulse from "./AboutStockPulse";
 
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -61,12 +63,12 @@ export default function Projects() {
     const blackHole = new THREE.Mesh(bhGeometry, bhMaterial);
     scene.add(blackHole);
 
-    // Intensely Glowing Inner Photon Ring
-    const photonGeometry = new THREE.RingGeometry(6.2, 8.5, 64);
+    // Intensely Glowing Inner Ring (Red/Orange)
+    const photonGeometry = new THREE.RingGeometry(6.2, 7.2, 64);
     const photonMaterial = new THREE.MeshBasicMaterial({ 
-        color: 0xffbb00, 
+        color: 0xff3300, // Fiery Red
         transparent: true, 
-        opacity: 0.4,
+        opacity: 0.6,
         blending: THREE.AdditiveBlending,
         side: THREE.DoubleSide
     });
@@ -74,12 +76,25 @@ export default function Projects() {
     photonRing.rotation.x = Math.PI * 0.45; // Match accretion disk tilt
     scene.add(photonRing);
 
-    // Subtle glowing halo behind the black hole
-    const haloGeometry = new THREE.SphereGeometry(7, 32, 32);
-    const haloMaterial = new THREE.MeshBasicMaterial({ 
-        color: 0xeab308, 
+    // Outer Photon Ring (Orange/Gold)
+    const outerRingGeom = new THREE.RingGeometry(7.4, 8.8, 64);
+    const outerRingMat = new THREE.MeshBasicMaterial({ 
+        color: 0xff8800, // Vibrant Orange
         transparent: true, 
-        opacity: 0.15,
+        opacity: 0.4,
+        blending: THREE.AdditiveBlending,
+        side: THREE.DoubleSide
+    });
+    const outerRing = new THREE.Mesh(outerRingGeom, outerRingMat);
+    outerRing.rotation.x = Math.PI * 0.45;
+    scene.add(outerRing);
+
+    // Subtle glowing halo behind the black hole
+    const haloGeometry = new THREE.SphereGeometry(7.5, 32, 32);
+    const haloMaterial = new THREE.MeshBasicMaterial({ 
+        color: 0xff1100, // Deep Red Glow
+        transparent: true, 
+        opacity: 0.2,
         blending: THREE.AdditiveBlending,
         side: THREE.BackSide
     });
@@ -87,45 +102,42 @@ export default function Projects() {
     scene.add(halo);
 
     // 2. 3D Accretion Disk (Particle Galaxy)
-    // Optimization: reduced particle count from 18000 to 8000 for smoother frame rates
     const particleCount = 8000;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
     const colorCore = new THREE.Color(0xffffff); // Blinding white core
-    const colorGold = new THREE.Color(0xeab308); // Amber/Gold
-    const colorCyan = new THREE.Color(0x2dd4bf); // Teal/Cyan
-    const colorDim = new THREE.Color(0x222222);
+    const colorRed = new THREE.Color(0xff2200); // Fiery Red
+    const colorVivid = new THREE.Color(0xd946ef); // Fuchsia/Pink
+    const colorDeep = new THREE.Color(0x5a0b91); // Zylo Deep Purple
+    const colorDim = new THREE.Color(0x1a052a); // Very dark purple
 
     for (let i = 0; i < particleCount; i++) {
-        // Create a swirling galaxy disc
-        const radius = Math.random() * Math.random() * 50 + 6.5; // keep away from black hole center
+        const radius = Math.random() * Math.random() * 50 + 6.5; 
         const spinAngle = Math.random() * Math.PI * 2;
         
-        // Math for spiral arms
-        const branches = 3;
+        const branches = 4;
         const branchAngle = ((i % branches) / branches) * Math.PI * 2;
         const finalAngle = spinAngle + branchAngle + radius * 0.5;
 
-        // Height variation (thicker in middle, thinner at edges)
         const yOffset = (Math.random() - 0.5) * (Math.random() * 4) * (15 / radius);
 
         positions[i * 3] = Math.cos(finalAngle) * radius;
         positions[i * 3 + 1] = yOffset;
         positions[i * 3 + 2] = Math.sin(finalAngle) * radius;
 
-        // Mix colors based on distance and randomness
         let pColor;
-        if (radius < 8) {
-            // Super heated inner ring
-            pColor = colorCore.clone().lerp(colorGold, Math.random());
+        if (radius < 10) {
+            // Core to Red
+            pColor = colorCore.clone().lerp(colorRed, (radius - 6.5) / 3.5);
+        } else if (radius < 20) {
+            // Red to Fuchsia
+            pColor = colorRed.clone().lerp(colorVivid, (radius - 10) / 10);
         } else {
-            const mixRatio = Math.random();
-            pColor = colorGold.clone().lerp(colorCyan, mixRatio);
-            
-            // Dim outer particles heavily
-            if (radius > 20 && Math.random() > 0.4) {
+            // Fuchsia to Deep Purple
+            pColor = colorVivid.clone().lerp(colorDeep, Math.random());
+            if (radius > 25 && Math.random() > 0.4) {
                 pColor.lerp(colorDim, 0.85);
             }
         }
@@ -153,6 +165,72 @@ export default function Projects() {
     galaxy.rotation.x = Math.PI * 0.15;
     galaxy.rotation.z = Math.PI * 0.05;
     scene.add(galaxy);
+
+    // 2.5 Big Granules / Nebula Bubbles (Different sizes and motions)
+    // Create multiple groups of bubbles for different sizes
+    const createBubbles = (count: number, size: number, colorLerp: (r: number) => THREE.Color) => {
+        const geom = new THREE.BufferGeometry();
+        const pos = new Float32Array(count * 3);
+        const col = new Float32Array(count * 3);
+        const speeds = new Float32Array(count); // Individual floating speeds
+        const phases = new Float32Array(count); // Individual sine wave phases
+
+        for (let i = 0; i < count; i++) {
+            const radius = 10 + Math.random() * 45;
+            const angle = Math.random() * Math.PI * 2;
+            const yOffset = (Math.random() - 0.5) * 12;
+
+            pos[i * 3] = Math.cos(angle) * radius;
+            pos[i * 3 + 1] = yOffset;
+            pos[i * 3 + 2] = Math.sin(angle) * radius;
+
+            speeds[i] = 0.5 + Math.random() * 2.5;
+            phases[i] = Math.random() * Math.PI * 2;
+
+            const color = colorLerp(radius);
+            col[i * 3] = color.r;
+            col[i * 3 + 1] = color.g;
+            col[i * 3 + 2] = color.b;
+        }
+
+        geom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        geom.setAttribute('color', new THREE.BufferAttribute(col, 3));
+        geom.setAttribute('aSpeed', new THREE.BufferAttribute(speeds, 1));
+        geom.setAttribute('aPhase', new THREE.BufferAttribute(phases, 1));
+
+        // Soft Circular Gradient Texture
+        const canvas = document.createElement('canvas');
+        canvas.width = 32; canvas.height = 32;
+        const ctx = canvas.getContext('2d');
+        if(ctx) {
+            const grad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+            grad.addColorStop(0, 'rgba(255,255,255,1)');
+            grad.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(16, 16, 16, 0, Math.PI * 2); ctx.fill();
+        }
+
+        const mat = new THREE.PointsMaterial({
+            size: size,
+            vertexColors: true,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            opacity: 0.4, // Reduced opacity so it's not overpowering
+            sizeAttenuation: true,
+            map: new THREE.CanvasTexture(canvas),
+            depthWrite: false
+        });
+
+        const points = new THREE.Points(geom, mat);
+        points.rotation.x = Math.PI * 0.15;
+        points.rotation.z = Math.PI * 0.05;
+        scene.add(points);
+        return points;
+    };
+
+    // Soft Light Granules (Not overpowering, subtle colors)
+    const bigLightBubbles = createBubbles(150, 1.2, (r) => new THREE.Color(0xffffff).lerp(new THREE.Color(0xe9d5ff), Math.random())); // Soft white/lavender
+    const medLightBubbles = createBubbles(300, 0.8, (r) => new THREE.Color(0xd8b4fe).lerp(new THREE.Color(0xc084fc), Math.random())); // Soft light purple
+    const smallWhiteBubbles = createBubbles(500, 0.4, (r) => new THREE.Color(0xffffff)); // Pure white dust
 
     // 3. Ambient Starfield (Background Dust)
     const dustGeom = new THREE.BufferGeometry();
@@ -200,17 +278,36 @@ export default function Projects() {
         
         if (!isVisible) return; // Completely pauses GPU usage when off-screen
 
+        const time = clock.getElapsedTime();
         const delta = clock.getDelta();
-
+        
         // Rotate the entire galaxy
         galaxy.rotation.y -= 0.08 * delta; // Spin speed
+        
+        // Spin the bubble clouds at different rates
+        bigLightBubbles.rotation.y -= 0.04 * delta;
+        medLightBubbles.rotation.y -= 0.06 * delta;
+        smallWhiteBubbles.rotation.y -= 0.09 * delta;
+
+        // Add some vertical floating motion to the bubbles
+        [bigLightBubbles, medLightBubbles, smallWhiteBubbles].forEach(bubbles => {
+            const pos = bubbles.geometry.attributes.position;
+            const speeds = bubbles.geometry.attributes.aSpeed;
+            const phases = bubbles.geometry.attributes.aPhase;
+            for(let i = 0; i < pos.count; i++) {
+                // Gentle bobbing motion
+                pos.setY(i, pos.getY(i) + Math.sin(time * speeds.getX(i) + phases.getX(i)) * 0.015);
+            }
+            pos.needsUpdate = true;
+        });
+
         photonRing.rotation.z += 0.2 * delta; // Inner ring spins faster
+        outerRing.rotation.z -= 0.15 * delta; // Counter-spin
         
         ambientDust.rotation.y -= 0.01 * delta;
         ambientDust.rotation.x += 0.005 * delta;
 
         // Make the halo pulse slightly
-        const time = clock.getElapsedTime();
         halo.scale.setScalar(1 + Math.sin(time * 3) * 0.04);
         photonRing.scale.setScalar(1 + Math.sin(time * 5) * 0.02);
 
@@ -240,7 +337,10 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="relative w-full h-screen bg-[#030508] font-jakarta overflow-hidden select-none text-stone-200 cursor-crosshair">
+    <section id="projects" className="relative w-full flex flex-col bg-[#030508] font-jakarta cursor-crosshair overflow-x-hidden">
+      
+      {/* 3D Dashboard Hero */}
+      <div className="relative w-full h-screen overflow-hidden shrink-0 select-none text-stone-200">
       <style dangerouslySetInnerHTML={{__html: `
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;900&family=Orbitron:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
         
@@ -258,6 +358,10 @@ export default function Projects() {
       {/* Super 3D WebGL Container */}
       <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none mix-blend-screen opacity-90"></div>
 
+      {/* Intense Purple Ambient Light at the bottom connecting to the next section */}
+      <div className="absolute bottom-0 left-0 w-full h-[500px] bg-[radial-gradient(ellipse_at_bottom,#a855f7_0%,transparent_60%)] opacity-20 z-10 pointer-events-none mix-blend-screen"></div>
+      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#030508] to-transparent z-10 pointer-events-none opacity-80"></div>
+
       {/* Elegant Overlays */}
       <div className="absolute inset-0 pointer-events-none z-10 bg-[radial-gradient(circle_at_center,transparent_0%,#030508_100%)] opacity-80"></div>
       <div className="absolute inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
@@ -272,7 +376,13 @@ export default function Projects() {
       <div className="relative z-20 w-full h-full flex flex-col p-8 md:p-12 max-w-[1900px] mx-auto pointer-events-auto">
           
           {/* PREMIUM HEADER */}
-          <header className="flex justify-between items-start border-b border-white/10 pb-6 relative z-20">
+          <motion.header 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex justify-between items-start border-b border-white/10 pb-6 relative z-20"
+          >
               <div className="flex gap-6 items-center">
                   <div className="flex flex-col gap-1.5 justify-center">
                       <div className="h-0.5 w-12 bg-amber-400 mb-1 shadow-[0_0_15px_rgba(251,191,36,0.6)]"></div>
@@ -292,12 +402,18 @@ export default function Projects() {
                   </div>
                   <div className="text-[10px] md:text-[12px] text-stone-300 tracking-[0.3em] mt-1">{timeStr}</div>
               </div>
-          </header>
+          </motion.header>
 
           <main className="flex-1 flex flex-col lg:flex-row mt-10 gap-10 min-h-0">
               
               {/* LEFT NAVIGATION PANE */}
-              <aside className="hidden lg:flex w-72 flex-col gap-8 relative z-20">
+              <motion.aside 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="hidden lg:flex w-72 flex-col gap-8 relative z-20"
+              >
                   <div className="bg-white/[0.02] border border-white/[0.05] rounded-3xl p-6 backdrop-blur-md relative group hover:border-amber-400/30 transition-colors duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
                       <div className="text-[10px] text-amber-500 tracking-[0.3em] mb-6 font-orbitron border-b border-white/[0.05] pb-3">/// DIRECTORY</div>
                       <nav className="flex flex-col gap-5">
@@ -329,11 +445,26 @@ export default function Projects() {
                            </div>
                        </div>
                   </div>
-              </aside>
+              </motion.aside>
 
               {/* CENTER HERO */}
-              <section className="flex-1 flex flex-col justify-center items-center relative text-center z-20">
-                  <div className="bg-white/[0.03] border border-white/[0.05] rounded-full px-6 py-2 mb-10 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+              <motion.section 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="flex-1 flex flex-col justify-center items-center relative text-center z-20"
+              >
+                  {/* Cyber-Avatar Container */}
+                  <div className="relative mb-8 w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-amber-500/30 p-1 group shadow-[0_0_30px_rgba(251,191,36,0.1)]">
+                      <div className="absolute inset-0 rounded-full border border-amber-400/50 animate-[spin_10s_linear_infinite] border-dashed"></div>
+                      <div className="absolute inset-[-10px] rounded-full border border-white/10 animate-[spin_15s_linear_infinite_reverse] border-dotted"></div>
+                      <div className="w-full h-full rounded-full overflow-hidden relative z-10 bg-[#030508]/80 backdrop-blur-md">
+                          <img src="/profile.png" alt="Sinde Yogesh" className="w-full h-full object-cover object-top group-hover:scale-110 group-hover:rotate-3 transition-all duration-700 ease-out" />
+                      </div>
+                  </div>
+
+                  <div className="bg-white/[0.03] border border-white/[0.05] rounded-full px-6 py-2 mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]">
                       <span className="text-[10px] tracking-[0.4em] text-stone-300 font-orbitron">CREATIVE DEVELOPER</span>
                   </div>
 
@@ -360,10 +491,16 @@ export default function Projects() {
                           CONTACT ME
                       </a>
                   </div>
-              </section>
+              </motion.section>
 
               {/* RIGHT PANEL (Diamond Navigation Matrix + Radar) */}
-              <aside className="hidden lg:flex w-72 flex-col justify-start items-center relative z-20 pb-8">
+              <motion.aside 
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                className="hidden lg:flex w-72 flex-col justify-start items-center relative z-20 pb-8"
+              >
                   
                   {/* Background Orbital Rings - Elegant Gold/White */}
                   <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] border border-white/[0.03] rounded-full pointer-events-none"></div>
@@ -426,12 +563,17 @@ export default function Projects() {
                           <div className="text-stone-400 mt-1">SYNC: 100%</div>
                       </div>
                   </div>
-
-              </aside>
+              </motion.aside>
           </main>
 
           {/* FOOTER */}
-          <footer className="mt-auto border-t border-white/[0.05] pt-6 pb-2 flex justify-between items-center text-[10px] font-orbitron tracking-widest text-stone-500 relative z-20">
+          <motion.footer 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-auto border-t border-white/[0.05] pt-6 pb-2 flex justify-between items-center text-[10px] font-orbitron tracking-widest text-stone-500 relative z-20"
+          >
               <div>&copy; 2025 SINDE YOGESH.</div>
               
               <div className="flex gap-8">
@@ -439,8 +581,13 @@ export default function Projects() {
                   <a href="#" className="hover:text-amber-400 hover:tracking-[0.3em] transition-all duration-300">LINKEDIN</a>
                   <a href="#" className="hover:text-amber-400 hover:tracking-[0.3em] transition-all duration-300">EMAIL</a>
               </div>
-          </footer>
+          </motion.footer>
       </div>
+      </div>
+
+      {/* About StockPulse Premium SaaS Section */}
+      <AboutStockPulse />
+      
     </section>
   );
 }
