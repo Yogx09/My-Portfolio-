@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { motion } from "framer-motion";
-import AboutStockPulse from "./AboutStockPulse";
 
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -585,9 +584,6 @@ export default function Projects() {
       </div>
       </div>
 
-      {/* About StockPulse Premium SaaS Section */}
-      <AboutStockPulse />
-      
     </section>
   );
 }
