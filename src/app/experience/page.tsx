@@ -403,8 +403,10 @@ export default function ExperiencePage() {
                 });
 
                 themeObjects.forEach((theme) => {
+                    const isMobile = window.innerWidth < 768;
                     const currentScale = theme.group.scale.x;
-                    const targetS = theme.group.userData.targetScale;
+                    const baseTargetS = theme.group.userData.targetScale;
+                    const targetS = baseTargetS * (isMobile ? 0.65 : 1.0);
                     const nextScale = THREE.MathUtils.lerp(currentScale, targetS, 0.15);
                     theme.group.scale.set(nextScale, nextScale, nextScale);
 
@@ -425,7 +427,8 @@ export default function ExperiencePage() {
                     theme.group.position.z = currentZ;
                     
                     const curveX = getCurveX(currentZ);
-                    theme.group.position.x = (theme.isLeft ? -6.4 : 6.4) + curveX; 
+                    const baseOffsetX = isMobile ? 3.8 : 6.4;
+                    theme.group.position.x = (theme.isLeft ? -baseOffsetX : baseOffsetX) + curveX; 
 
                     const tiltAngle = Math.PI / 5; 
                     const baseRot = theme.isLeft ? (Math.PI / 2 + tiltAngle) : (-Math.PI / 2 - tiltAngle);
@@ -483,7 +486,7 @@ export default function ExperiencePage() {
                     <span className="text-xs font-medium tracking-widest text-slate-400 group-hover:text-slate-800 transition-colors uppercase">HOME</span>
                 </Link>
 
-                <div className="text-xs font-semibold tracking-[0.2em] text-slate-300">
+                <div className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-slate-300 hidden sm:block">
                     EXPERIENCE ARCHIVES
                 </div>
             </div>
@@ -494,15 +497,15 @@ export default function ExperiencePage() {
                 </div>
             </div>
 
-            <div id="construction-message" style={{ display: 'none' }} className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center z-40 pointer-events-none animate-in slide-in-from-bottom-8 fade-in duration-700">
-                <div className="bg-white/90 backdrop-blur-md border border-slate-200 px-8 py-6 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.1)] text-center relative overflow-hidden">
+            <div id="construction-message" style={{ display: 'none' }} className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center z-40 pointer-events-none animate-in slide-in-from-bottom-8 fade-in duration-700 w-[90%] max-w-sm">
+                <div className="bg-white/90 backdrop-blur-md border border-slate-200 px-6 sm:px-8 py-6 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.1)] text-center relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-cyan-400"></div>
                     <div className="w-12 h-12 rounded-full bg-cyan-50 flex items-center justify-center mx-auto mb-4">
                         <div className="w-3 h-3 bg-cyan-400 rounded-full animate-ping"></div>
                         <div className="w-3 h-3 bg-cyan-500 rounded-full absolute"></div>
                     </div>
-                    <h2 className="text-slate-900 font-black tracking-[0.15em] mb-2 text-sm uppercase">SECTOR UNDER CONSTRUCTION</h2>
-                    <p className="text-slate-500 text-xs tracking-wide max-w-xs leading-relaxed">The internal pathways for this section are currently being synthesized. Please check back later.</p>
+                    <h2 className="text-slate-900 font-black tracking-[0.15em] mb-2 text-[10px] sm:text-sm uppercase">SECTOR UNDER CONSTRUCTION</h2>
+                    <p className="text-slate-500 text-[10px] sm:text-xs tracking-wide max-w-xs leading-relaxed mx-auto">The internal pathways for this section are currently being synthesized. Please check back later.</p>
                 </div>
             </div>
 

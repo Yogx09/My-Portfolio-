@@ -674,7 +674,7 @@ export default function SkillsPage() {
       <div id="skill-hud" className="fixed inset-0 z-[200] pointer-events-none flex items-center justify-center opacity-0 transition-opacity duration-300">
           <div className="absolute inset-0 skill-hud-backdrop"></div>
           
-          <div id="skill-card" className="skill-card rounded-3xl p-10 w-[420px] flex flex-col items-center relative overflow-hidden">
+          <div id="skill-card" className="skill-card rounded-3xl p-6 sm:p-10 w-[90vw] sm:w-[420px] max-w-full flex flex-col items-center relative overflow-hidden">
               <div className="scanner-line z-50"></div>
               <div id="hud-glow" className="absolute -top-20 -left-20 w-56 h-56 rounded-full blur-[60px] opacity-40 transition-colors duration-500"></div>
               
@@ -708,8 +708,8 @@ export default function SkillsPage() {
           </div>
       </button>
 
-      <div id="skill-matrix-modal" className="fixed inset-0 z-[300] bg-slate-950/80 backdrop-blur-2xl opacity-0 pointer-events-none transition-opacity duration-500 flex items-center justify-center p-4 sm:p-8">
-          <div className="w-full max-w-6xl max-h-[90vh] bg-slate-900/50 border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)] rounded-3xl p-8 flex flex-col relative scale-95 transform transition-transform duration-500" id="matrix-container">
+      <div id="skill-matrix-modal" className="fixed inset-0 z-[300] bg-slate-950/80 backdrop-blur-2xl opacity-0 pointer-events-none transition-opacity duration-500 flex items-center justify-center p-2 sm:p-4 md:p-8">
+          <div className="w-full max-w-6xl max-h-[90vh] bg-slate-900/50 border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)] rounded-3xl p-4 sm:p-8 flex flex-col relative scale-95 transform transition-transform duration-500" id="matrix-container">
               <div className="absolute -top-32 left-1/2 transform -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/20 blur-[100px] rounded-full pointer-events-none"></div>
 
               <div className="flex justify-between items-center mb-8 relative z-10 border-b border-white/10 pb-6">

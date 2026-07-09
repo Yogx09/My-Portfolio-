@@ -31,7 +31,7 @@ export default function AboutPage() {
       </div>
 
       {/* Header */}
-      <header className="relative z-20 w-full p-8 md:p-12 flex justify-between items-center max-w-[1400px] mx-auto">
+      <header className="relative z-20 w-full p-4 sm:p-6 md:p-12 flex justify-between items-center max-w-[1400px] mx-auto">
         <Link href="/#projects" className="group flex items-center gap-3 text-xs font-mono tracking-widest text-indigo-400 hover:text-amber-400 transition-colors">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span className="w-6 h-[1px] bg-indigo-400 group-hover:bg-amber-400 group-hover:w-10 transition-all duration-300 shadow-[0_0_10px_currentColor]"></span>
@@ -47,7 +47,7 @@ export default function AboutPage() {
         variants={STAGGER}
         initial="hidden"
         animate="show"
-        className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[220px]"
+        className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-auto md:auto-rows-[220px]"
       >
         
         {/* CARD 1: Identity & Avatar (Spans 2 cols, 2 rows) */}
@@ -58,7 +58,7 @@ export default function AboutPage() {
              <div className="absolute inset-0 bg-gradient-to-t from-[#030305] via-[#030305]/80 to-transparent"></div>
           </div>
           
-          <div className="relative z-10 w-full h-full p-8 md:p-10 flex flex-col justify-end">
+          <div className="relative z-10 w-full h-full p-6 md:p-10 flex flex-col justify-end min-h-[300px] md:min-h-0">
              <div className="w-12 h-[2px] bg-amber-500 mb-6 shadow-[0_0_15px_rgba(245,158,11,0.8)]"></div>
              <h1 className="font-cinzel font-black text-4xl md:text-6xl tracking-widest text-white uppercase drop-shadow-lg leading-tight mb-2">
                 SINDE <br/> YOGESH
@@ -70,7 +70,7 @@ export default function AboutPage() {
         </motion.div>
 
         {/* CARD 2: Philosophy (Spans 2 cols, 1 row) */}
-        <motion.div variants={BENTO_ANIMATION} className="col-span-1 md:col-span-2 lg:col-span-2 row-span-1 bg-white/[0.02] border border-white/[0.05] rounded-[2rem] overflow-hidden relative group shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-md p-8 md:p-10 flex flex-col justify-center">
+        <motion.div variants={BENTO_ANIMATION} className="col-span-1 md:col-span-2 lg:col-span-2 row-span-1 bg-white/[0.02] border border-white/[0.05] rounded-[2rem] overflow-hidden relative group shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-md p-6 md:p-10 flex flex-col justify-center min-h-[220px] md:min-h-0">
            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
            <Terminal className="w-6 h-6 text-indigo-400 mb-4 opacity-50" />
            <p className="text-stone-300 font-jakarta text-sm md:text-base leading-relaxed font-light">
@@ -80,7 +80,7 @@ export default function AboutPage() {
         </motion.div>
 
         {/* CARD 3: Location / Map (Spans 1 col, 1 row) */}
-        <motion.div variants={BENTO_ANIMATION} className="col-span-1 md:col-span-1 lg:col-span-1 row-span-1 bg-white/[0.02] border border-white/[0.05] rounded-[2rem] overflow-hidden relative group shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-md flex flex-col items-center justify-center">
+        <motion.div variants={BENTO_ANIMATION} className="col-span-1 md:col-span-1 lg:col-span-1 row-span-1 bg-white/[0.02] border border-white/[0.05] rounded-[2rem] overflow-hidden relative group shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-md flex flex-col items-center justify-center min-h-[220px] md:min-h-0">
             {/* Radar Animation */}
             <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity duration-500">
                <div className="w-32 h-32 border border-emerald-500/30 rounded-full"></div>
@@ -94,7 +94,7 @@ export default function AboutPage() {
         </motion.div>
 
         {/* CARD 4: Live Status (Spans 1 col, 1 row) */}
-        <motion.div variants={BENTO_ANIMATION} className="col-span-1 md:col-span-1 lg:col-span-1 row-span-1 bg-white/[0.02] border border-white/[0.05] rounded-[2rem] overflow-hidden relative group shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-md flex flex-col items-center justify-center">
+        <motion.div variants={BENTO_ANIMATION} className="col-span-1 md:col-span-1 lg:col-span-1 row-span-1 bg-white/[0.02] border border-white/[0.05] rounded-[2rem] overflow-hidden relative group shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-md flex flex-col items-center justify-center min-h-[220px] md:min-h-0">
             <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/30 mb-4 group-hover:scale-110 transition-transform duration-500">

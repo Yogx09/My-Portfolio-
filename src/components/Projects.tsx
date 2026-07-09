@@ -467,7 +467,7 @@ export default function Projects() {
                       <span className="text-[10px] tracking-[0.4em] text-stone-300 font-orbitron">CREATIVE DEVELOPER</span>
                   </div>
 
-                  <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-cinzel-dec font-black tracking-tighter leading-none mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white via-stone-200 to-stone-600 drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] uppercase">
+                  <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[8rem] font-cinzel-dec font-black tracking-tighter leading-none mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white via-stone-200 to-stone-600 drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] uppercase">
                       YOGESH
                   </h1>
                   
@@ -498,13 +498,13 @@ export default function Projects() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                className="hidden lg:flex w-72 flex-col justify-start items-center relative z-20 pb-8"
+                className="flex lg:w-72 flex-col justify-start items-center relative z-20 pb-8 mt-8 lg:mt-0 overflow-hidden lg:overflow-visible"
               >
                   
                   {/* Background Orbital Rings - Elegant Gold/White */}
-                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] border border-white/[0.03] rounded-full pointer-events-none"></div>
-                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] border border-amber-500/10 rounded-full pointer-events-none animate-[spin_60s_linear_infinite_reverse]"></div>
-                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] border border-white/[0.05] rounded-full border-dashed pointer-events-none animate-[spin_40s_linear_infinite]"></div>
+                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] border border-white/[0.03] rounded-full pointer-events-none"></div>
+                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] sm:w-[380px] sm:h-[380px] border border-amber-500/10 rounded-full pointer-events-none animate-[spin_60s_linear_infinite_reverse]"></div>
+                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] border border-white/[0.05] rounded-full border-dashed pointer-events-none animate-[spin_40s_linear_infinite]"></div>
 
                   {/* Diamond Grid Container */}
                   <div className="relative w-[220px] h-[220px] mx-auto z-10 mb-auto mt-[20%] drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
@@ -571,11 +571,11 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-auto border-t border-white/[0.05] pt-6 pb-2 flex justify-between items-center text-[10px] font-orbitron tracking-widest text-stone-500 relative z-20"
+            className="mt-auto border-t border-white/[0.05] pt-6 pb-2 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-orbitron tracking-widest text-stone-500 relative z-20 text-center"
           >
               <div>&copy; 2025 SINDE YOGESH.</div>
               
-              <div className="flex gap-8">
+              <div className="flex gap-4 md:gap-8 flex-wrap justify-center">
                   <a href="#" className="hover:text-amber-400 hover:tracking-[0.3em] transition-all duration-300">GITHUB</a>
                   <a href="#" className="hover:text-amber-400 hover:tracking-[0.3em] transition-all duration-300">LINKEDIN</a>
                   <a href="#" className="hover:text-amber-400 hover:tracking-[0.3em] transition-all duration-300">EMAIL</a>
