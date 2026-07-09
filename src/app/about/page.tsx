@@ -35,7 +35,7 @@ export default function AboutPage() {
         <Link href="/#projects" className="group flex items-center gap-3 text-xs font-mono tracking-widest text-indigo-400 hover:text-amber-400 transition-colors">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span className="w-6 h-[1px] bg-indigo-400 group-hover:bg-amber-400 group-hover:w-10 transition-all duration-300 shadow-[0_0_10px_currentColor]"></span>
-          [ RETURN_TO_PORTAL ]
+          [ HOME ]
         </Link>
         <div className="font-orbitron font-black text-xs tracking-[0.4em] text-slate-500">
           SYS.LOC: <span className="text-amber-600 drop-shadow-[0_0_8px_#d97706]">/ABOUT_ME</span>

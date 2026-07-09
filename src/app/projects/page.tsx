@@ -261,9 +261,9 @@ export default function ProjectsPage() {
       <SmartCursor />
       <FilmGrain />
 
-      <Link href="/" className="fixed top-8 left-8 z-[100] group flex items-center gap-3 px-6 py-3 bg-black/50 backdrop-blur-md border border-white/10 rounded-full hover:bg-white/10 transition-colors">
+      <Link href="/#projects" className="fixed top-8 left-8 z-[100] group flex items-center gap-3 px-6 py-3 bg-black/50 backdrop-blur-md border border-white/10 rounded-full hover:bg-white/10 transition-colors">
         <ArrowLeft className="w-5 h-5 text-white/70 group-hover:-translate-x-1 transition-transform" />
-        <span className="font-orbitron font-bold text-xs tracking-widest text-white/70">NEXUS</span>
+        <span className="font-orbitron font-bold text-xs tracking-widest text-white/70">HOME</span>
       </Link>
 
       {/* Hero Intro */}

@@ -440,7 +440,7 @@ export default function SkillsPage() {
       {/* Return Home Button */}
       <Link href="/#projects" className="fixed top-6 left-6 z-[200] bg-slate-900/50 backdrop-blur-md border border-white/20 shadow-lg rounded-full px-5 py-2.5 flex items-center gap-3 hover:bg-white/10 hover:border-white/50 hover:scale-105 transition-all group">
         <i className="fa-solid fa-arrow-left text-white group-hover:-translate-x-1 transition-transform"></i>
-        <span className="text-white font-bold text-xs tracking-widest uppercase">Return Base</span>
+        <span className="text-white font-bold text-xs tracking-widest uppercase">HOME</span>
       </Link>
 
       <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[1920px] h-[400px] z-[15] pointer-events-none">
