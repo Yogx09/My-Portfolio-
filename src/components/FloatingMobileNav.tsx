@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, User, Briefcase, Code2, Cpu } from "lucide-react";
+import { X, User, Briefcase, Code2, Cpu, Hexagon } from "lucide-react";
 import Link from "next/link";
 
 export default function FloatingMobileNav() {
@@ -56,10 +56,9 @@ export default function FloatingMobileNav() {
 
       <button
         onClick={toggleNav}
-        className="w-14 h-14 rounded-full bg-amber-500 border border-amber-300 flex items-center justify-center text-black shadow-[0_0_20px_rgba(251,191,36,0.4)] pointer-events-auto active:scale-90 transition-all duration-300 relative z-10"
+        className="w-14 h-14 rounded-full bg-gradient-to-tr from-cyan-500 to-purple-600 border border-white/20 flex items-center justify-center text-white shadow-[0_0_20px_rgba(168,85,247,0.5)] pointer-events-auto active:scale-90 transition-all duration-300 relative z-10"
       >
-        <div className="absolute inset-0 rounded-full border border-white/50 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
-        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        {isOpen ? <X className="w-6 h-6" /> : <Hexagon className="w-6 h-6" />}
       </button>
     </div>
   );
