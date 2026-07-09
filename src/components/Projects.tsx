@@ -452,7 +452,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="flex-1 flex flex-col justify-center items-center relative text-center z-20"
+                className="flex-1 flex flex-col justify-center items-center relative text-center z-20 pr-14 lg:pr-0"
               >
                   {/* Cyber-Avatar Container */}
                   <div className="relative mb-8 w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-amber-500/30 p-1 group shadow-[0_0_30px_rgba(251,191,36,0.1)]">
@@ -467,26 +467,26 @@ export default function Projects() {
                       <span className="text-[10px] tracking-[0.4em] text-stone-300 font-orbitron">CREATIVE DEVELOPER</span>
                   </div>
 
-                  <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[8rem] font-cinzel-dec font-black tracking-tighter leading-none mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white via-stone-200 to-stone-600 drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] uppercase">
+                  <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[8rem] font-cinzel-dec font-black tracking-tighter leading-none mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white via-stone-200 to-stone-600 drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] uppercase">
                       YOGESH
                   </h1>
                   
-                  <div className="flex items-center gap-6 mb-12 w-full max-w-xl">
+                  <div className="flex items-center gap-4 md:gap-6 mb-10 md:mb-12 w-full max-w-[260px] md:max-w-xl mx-auto">
                       <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-amber-500/50"></div>
-                      <h2 className="text-xs md:text-sm tracking-[0.6em] text-amber-400 font-orbitron font-bold drop-shadow-[0_0_15px_rgba(251,191,36,0.4)]">3D ENGINEER</h2>
+                      <h2 className="text-[10px] md:text-sm tracking-[0.5em] md:tracking-[0.6em] text-amber-400 font-orbitron font-bold drop-shadow-[0_0_15px_rgba(251,191,36,0.4)]">3D ENGINEER</h2>
                       <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-amber-500/50"></div>
                   </div>
 
-                  <p className="max-w-2xl text-sm md:text-base leading-relaxed text-stone-300/90 mb-12 font-jakarta font-light text-center">
+                  <p className="max-w-[260px] sm:max-w-sm md:max-w-2xl text-[11px] md:text-base leading-relaxed text-stone-300/90 mb-10 md:mb-12 font-jakarta font-light text-center">
                       Merging cinematic aesthetics with modern web technologies. <br/>
                       Building high-performance digital realities and immersive 3D experiences.
                   </p>
 
-                  <div className="flex gap-8 font-orbitron">
-                      <a href="/projects" className="relative px-10 py-4 bg-amber-500/10 border border-amber-500/50 rounded-full text-amber-400 tracking-[0.3em] text-[10px] font-bold uppercase hover:bg-amber-500 hover:text-black hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all duration-500 group overflow-hidden">
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 font-orbitron">
+                      <a href="/projects" className="relative px-8 py-3 md:px-10 md:py-4 bg-amber-500/10 border border-amber-500/50 rounded-full text-amber-400 tracking-[0.3em] text-[9px] md:text-[10px] font-bold uppercase hover:bg-amber-500 hover:text-black hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] transition-all duration-500 group overflow-hidden">
                           <span className="relative z-10">EXPLORE WORK</span>
                       </a>
-                      <a href="/contact" className="px-10 py-4 border border-white/10 rounded-full bg-white/[0.02] backdrop-blur-md text-white tracking-[0.3em] text-[10px] font-bold uppercase hover:border-white/40 hover:bg-white/10 transition-all duration-500">
+                      <a href="/contact" className="px-8 py-3 md:px-10 md:py-4 border border-white/10 rounded-full bg-white/[0.02] backdrop-blur-md text-white tracking-[0.3em] text-[9px] md:text-[10px] font-bold uppercase hover:border-white/40 hover:bg-white/10 transition-all duration-500">
                           CONTACT ME
                       </a>
                   </div>
@@ -498,7 +498,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                className="fixed right-6 top-1/2 -translate-y-1/2 z-[100] flex flex-col items-center lg:static lg:translate-y-0 lg:w-72 lg:justify-start lg:relative lg:z-20 lg:pb-8 lg:mt-0"
+                className="fixed right-2 top-1/2 -translate-y-1/2 z-[100] flex flex-col items-center lg:static lg:translate-y-0 lg:w-72 lg:justify-start lg:relative lg:z-20 lg:pb-8 lg:mt-0"
               >
                   
                   {/* Background Orbital Rings - Elegant Gold/White (Hidden on Mobile) */}
@@ -508,37 +508,37 @@ export default function Projects() {
 
                   {/* Diamond Grid Container */}
                   <div className="relative z-10 lg:w-[220px] lg:h-[220px] mx-auto mb-auto lg:mt-[20%] drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
-                      <div className="lg:absolute lg:inset-0 lg:transform lg:rotate-45 flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-3">
+                      <div className="lg:absolute lg:inset-0 lg:transform lg:rotate-45 flex flex-col lg:grid lg:grid-cols-2 gap-3">
                           
                           {/* TOP DIAMOND (About Me) */}
-                          <a href="/about" className="group relative w-14 h-14 lg:w-full lg:h-full border border-white/20 bg-black/40 backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl transform rotate-45 lg:rotate-0">
-                              <div className="-rotate-45 flex flex-col items-center gap-1 lg:gap-2">
-                                  <svg className="w-4 h-4 lg:w-5 lg:h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                                  <span className="font-orbitron font-bold text-[6px] lg:text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em] text-center">ABOUT</span>
+                          <a href="/about" className="group relative w-11 h-11 lg:w-full lg:h-full border border-white/20 bg-black/40 backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl transform rotate-45 lg:rotate-0">
+                              <div className="-rotate-45 flex flex-col items-center lg:gap-2">
+                                  <svg className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                                  <span className="font-orbitron font-bold text-[5px] lg:text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em] text-center mt-0.5 lg:mt-0">ABOUT</span>
                               </div>
                           </a>
 
                           {/* RIGHT DIAMOND (Experience) */}
-                          <a href="/experience" className="group relative w-14 h-14 lg:w-full lg:h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)] transform rotate-45 lg:rotate-0">
-                              <div className="-rotate-45 flex flex-col items-center gap-1 lg:gap-2">
-                                  <svg className="w-4 h-4 lg:w-5 lg:h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-                                  <span className="font-orbitron font-bold text-[6px] lg:text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em]">EXP</span>
+                          <a href="/experience" className="group relative w-11 h-11 lg:w-full lg:h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)] transform rotate-45 lg:rotate-0">
+                              <div className="-rotate-45 flex flex-col items-center lg:gap-2">
+                                  <svg className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                                  <span className="font-orbitron font-bold text-[5px] lg:text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em] mt-0.5 lg:mt-0">EXP</span>
                               </div>
                           </a>
 
                           {/* LEFT DIAMOND (Projects) */}
-                          <a href="/projects" className="group relative w-14 h-14 lg:w-full lg:h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)] transform rotate-45 lg:rotate-0">
-                              <div className="-rotate-45 flex flex-col items-center gap-1 lg:gap-2">
-                                  <svg className="w-4 h-4 lg:w-5 lg:h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
-                                  <span className="font-orbitron font-bold text-[6px] lg:text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em]">WORK</span>
+                          <a href="/projects" className="group relative w-11 h-11 lg:w-full lg:h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)] transform rotate-45 lg:rotate-0">
+                              <div className="-rotate-45 flex flex-col items-center lg:gap-2">
+                                  <svg className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                                  <span className="font-orbitron font-bold text-[5px] lg:text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em] mt-0.5 lg:mt-0">WORK</span>
                               </div>
                           </a>
 
                           {/* BOTTOM DIAMOND (Skills) */}
-                          <a href="/skills" className="group relative w-14 h-14 lg:w-full lg:h-full border border-white/20 bg-black/40 backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl transform rotate-45 lg:rotate-0">
-                              <div className="-rotate-45 flex flex-col items-center gap-1 lg:gap-2">
-                                  <svg className="w-4 h-4 lg:w-5 lg:h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                                  <span className="font-orbitron font-bold text-[6px] lg:text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em]">SKILLS</span>
+                          <a href="/skills" className="group relative w-11 h-11 lg:w-full lg:h-full border border-white/20 bg-black/40 backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl transform rotate-45 lg:rotate-0">
+                              <div className="-rotate-45 flex flex-col items-center lg:gap-2">
+                                  <svg className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                                  <span className="font-orbitron font-bold text-[5px] lg:text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em] mt-0.5 lg:mt-0">SKILLS</span>
                               </div>
                           </a>
 
