@@ -3,11 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [timeStr, setTimeStr] = useState("00:00:00");
   const [dateStr, setDateStr] = useState("00 XXX 0000");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     // Set Time live
@@ -382,8 +384,11 @@ export default function Projects() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex justify-between items-start border-b border-white/10 pb-6 relative z-20"
           >
-              <div className="flex gap-6 items-center">
-                  <div className="flex flex-col gap-1.5 justify-center">
+              <div className="flex gap-4 sm:gap-6 items-center">
+                  <button onClick={() => setIsSidebarOpen(true)} className="lg:hidden text-white/70 hover:text-white transition-colors z-50">
+                      <Menu className="w-6 h-6" />
+                  </button>
+                  <div className="flex flex-col gap-1.5 justify-center hidden sm:flex">
                       <div className="h-0.5 w-12 bg-amber-400 mb-1 shadow-[0_0_15px_rgba(251,191,36,0.6)]"></div>
                       <div className="h-0.5 w-8 bg-white/40"></div>
                       <div className="h-0.5 w-16 bg-white/20"></div>
@@ -402,6 +407,32 @@ export default function Projects() {
                   <div className="text-[10px] md:text-[12px] text-stone-300 tracking-[0.3em] mt-1">{timeStr}</div>
               </div>
           </motion.header>
+
+          {/* MOBILE TRANSPARENT SIDEBAR */}
+          <div className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-500 lg:hidden ${isSidebarOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+              <div className={`absolute top-0 left-0 w-64 h-full bg-[#030508]/80 border-r border-white/10 backdrop-blur-xl p-8 flex flex-col gap-8 transition-transform duration-500 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+                  <button onClick={() => setIsSidebarOpen(false)} className="absolute top-8 right-6 text-white/50 hover:text-white transition-colors">
+                      <X className="w-6 h-6" />
+                  </button>
+                  
+                  <div className="mt-8 text-[10px] text-amber-500 tracking-[0.3em] font-orbitron border-b border-white/[0.05] pb-3">/// DIRECTORY</div>
+                  <nav className="flex flex-col gap-6">
+                      {[
+                          { label: 'HOME', link: '#' },
+                          { label: 'ABOUT', link: '/about' },
+                          { label: 'SKILLS', link: '/skills' },
+                          { label: 'PROJECTS', link: '/projects' },
+                          { label: 'CONTACT', link: '/contact' }
+                      ].map((item, i) => (
+                          <a key={i} href={item.link} onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-4 text-sm tracking-[0.2em] text-stone-300 hover:text-white hover:translate-x-2 transition-all duration-300 font-jakarta group/link">
+                              <span className="w-4 h-[1px] bg-white/20 group-hover/link:w-6 group-hover/link:bg-amber-400 transition-all duration-500"></span>
+                              <span className="font-orbitron text-[10px] opacity-40 text-amber-400">0{i+1}</span>
+                              {item.label}
+                          </a>
+                      ))}
+                  </nav>
+              </div>
+          </div>
 
           <main className="flex-1 flex flex-col lg:flex-row mt-10 gap-10 min-h-0">
               
