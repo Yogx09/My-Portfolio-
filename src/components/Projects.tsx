@@ -3,13 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
 
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [timeStr, setTimeStr] = useState("00:00:00");
   const [dateStr, setDateStr] = useState("00 XXX 0000");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     // Set Time live
@@ -384,11 +382,8 @@ export default function Projects() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex justify-between items-start border-b border-white/10 pb-6 relative z-20"
           >
-              <div className="flex gap-4 sm:gap-6 items-center">
-                  <button onClick={() => setIsSidebarOpen(true)} className="lg:hidden text-white/70 hover:text-white transition-colors z-50">
-                      <Menu className="w-6 h-6" />
-                  </button>
-                  <div className="flex flex-col gap-1.5 justify-center hidden sm:flex">
+              <div className="flex gap-6 items-center">
+                  <div className="flex flex-col gap-1.5 justify-center">
                       <div className="h-0.5 w-12 bg-amber-400 mb-1 shadow-[0_0_15px_rgba(251,191,36,0.6)]"></div>
                       <div className="h-0.5 w-8 bg-white/40"></div>
                       <div className="h-0.5 w-16 bg-white/20"></div>
@@ -407,32 +402,6 @@ export default function Projects() {
                   <div className="text-[10px] md:text-[12px] text-stone-300 tracking-[0.3em] mt-1">{timeStr}</div>
               </div>
           </motion.header>
-
-          {/* MOBILE TRANSPARENT SIDEBAR */}
-          <div className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-500 lg:hidden ${isSidebarOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-              <div className={`absolute top-0 left-0 w-64 h-full bg-[#030508]/80 border-r border-white/10 backdrop-blur-xl p-8 flex flex-col gap-8 transition-transform duration-500 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-                  <button onClick={() => setIsSidebarOpen(false)} className="absolute top-8 right-6 text-white/50 hover:text-white transition-colors">
-                      <X className="w-6 h-6" />
-                  </button>
-                  
-                  <div className="mt-8 text-[10px] text-amber-500 tracking-[0.3em] font-orbitron border-b border-white/[0.05] pb-3">/// DIRECTORY</div>
-                  <nav className="flex flex-col gap-6">
-                      {[
-                          { label: 'HOME', link: '#' },
-                          { label: 'ABOUT', link: '/about' },
-                          { label: 'SKILLS', link: '/skills' },
-                          { label: 'PROJECTS', link: '/projects' },
-                          { label: 'CONTACT', link: '/contact' }
-                      ].map((item, i) => (
-                          <a key={i} href={item.link} onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-4 text-sm tracking-[0.2em] text-stone-300 hover:text-white hover:translate-x-2 transition-all duration-300 font-jakarta group/link">
-                              <span className="w-4 h-[1px] bg-white/20 group-hover/link:w-6 group-hover/link:bg-amber-400 transition-all duration-500"></span>
-                              <span className="font-orbitron text-[10px] opacity-40 text-amber-400">0{i+1}</span>
-                              {item.label}
-                          </a>
-                      ))}
-                  </nav>
-              </div>
-          </div>
 
           <main className="flex-1 flex flex-col lg:flex-row mt-10 gap-10 min-h-0">
               
@@ -529,47 +498,47 @@ export default function Projects() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                className="flex lg:w-72 flex-col justify-start items-center relative z-20 pb-8 mt-8 lg:mt-0 overflow-hidden lg:overflow-visible"
+                className="fixed right-6 top-1/2 -translate-y-1/2 z-[100] flex flex-col items-center lg:static lg:translate-y-0 lg:w-72 lg:justify-start lg:relative lg:z-20 lg:pb-8 lg:mt-0"
               >
                   
-                  {/* Background Orbital Rings - Elegant Gold/White */}
-                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] border border-white/[0.03] rounded-full pointer-events-none"></div>
-                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] sm:w-[380px] sm:h-[380px] border border-amber-500/10 rounded-full pointer-events-none animate-[spin_60s_linear_infinite_reverse]"></div>
-                  <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] border border-white/[0.05] rounded-full border-dashed pointer-events-none animate-[spin_40s_linear_infinite]"></div>
+                  {/* Background Orbital Rings - Elegant Gold/White (Hidden on Mobile) */}
+                  <div className="hidden lg:block absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] border border-white/[0.03] rounded-full pointer-events-none"></div>
+                  <div className="hidden lg:block absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] border border-amber-500/10 rounded-full pointer-events-none animate-[spin_60s_linear_infinite_reverse]"></div>
+                  <div className="hidden lg:block absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] border border-white/[0.05] rounded-full border-dashed pointer-events-none animate-[spin_40s_linear_infinite]"></div>
 
                   {/* Diamond Grid Container */}
-                  <div className="relative w-[220px] h-[220px] mx-auto z-10 mb-auto mt-[20%] drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
-                      <div className="absolute inset-0 transform rotate-45 grid grid-cols-2 gap-3">
+                  <div className="relative z-10 lg:w-[220px] lg:h-[220px] mx-auto mb-auto lg:mt-[20%] drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+                      <div className="lg:absolute lg:inset-0 lg:transform lg:rotate-45 flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-3">
                           
                           {/* TOP DIAMOND (About Me) */}
-                          <a href="/about" className="group relative w-full h-full border border-white/20 bg-white/[0.02] backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-2xl">
-                              <div className="-rotate-45 flex flex-col items-center gap-2">
-                                  <svg className="w-5 h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                                  <span className="font-orbitron font-bold text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em] text-center">ABOUT</span>
+                          <a href="/about" className="group relative w-14 h-14 lg:w-full lg:h-full border border-white/20 bg-black/40 backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl transform rotate-45 lg:rotate-0">
+                              <div className="-rotate-45 flex flex-col items-center gap-1 lg:gap-2">
+                                  <svg className="w-4 h-4 lg:w-5 lg:h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                                  <span className="font-orbitron font-bold text-[6px] lg:text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em] text-center">ABOUT</span>
                               </div>
                           </a>
 
                           {/* RIGHT DIAMOND (Experience) */}
-                          <a href="/experience" className="group relative w-full h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)]">
-                              <div className="-rotate-45 flex flex-col items-center gap-2">
-                                  <svg className="w-5 h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-                                  <span className="font-orbitron font-bold text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em]">EXP</span>
+                          <a href="/experience" className="group relative w-14 h-14 lg:w-full lg:h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)] transform rotate-45 lg:rotate-0">
+                              <div className="-rotate-45 flex flex-col items-center gap-1 lg:gap-2">
+                                  <svg className="w-4 h-4 lg:w-5 lg:h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                                  <span className="font-orbitron font-bold text-[6px] lg:text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em]">EXP</span>
                               </div>
                           </a>
 
                           {/* LEFT DIAMOND (Projects) */}
-                          <a href="/projects" className="group relative w-full h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)]">
-                              <div className="-rotate-45 flex flex-col items-center gap-2">
-                                  <svg className="w-5 h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
-                                  <span className="font-orbitron font-bold text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em]">WORK</span>
+                          <a href="/projects" className="group relative w-14 h-14 lg:w-full lg:h-full border border-amber-500/30 bg-black/40 backdrop-blur-xl hover:bg-amber-500/20 hover:border-amber-400 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl shadow-[inset_0_0_20px_rgba(251,191,36,0.05)] transform rotate-45 lg:rotate-0">
+                              <div className="-rotate-45 flex flex-col items-center gap-1 lg:gap-2">
+                                  <svg className="w-4 h-4 lg:w-5 lg:h-5 text-amber-500 group-hover:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                                  <span className="font-orbitron font-bold text-[6px] lg:text-[8px] text-amber-500/70 group-hover:text-amber-400 tracking-[0.2em]">WORK</span>
                               </div>
                           </a>
 
                           {/* BOTTOM DIAMOND (Skills) */}
-                          <a href="/skills" className="group relative w-full h-full border border-white/20 bg-white/[0.02] backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-2xl">
-                              <div className="-rotate-45 flex flex-col items-center gap-2">
-                                  <svg className="w-5 h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                                  <span className="font-orbitron font-bold text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em]">SKILLS</span>
+                          <a href="/skills" className="group relative w-14 h-14 lg:w-full lg:h-full border border-white/20 bg-black/40 backdrop-blur-xl hover:bg-white/10 hover:border-white/50 flex items-center justify-center transition-all duration-500 rounded-xl lg:rounded-2xl transform rotate-45 lg:rotate-0">
+                              <div className="-rotate-45 flex flex-col items-center gap-1 lg:gap-2">
+                                  <svg className="w-4 h-4 lg:w-5 lg:h-5 text-stone-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                                  <span className="font-orbitron font-bold text-[6px] lg:text-[9px] text-stone-400 group-hover:text-white tracking-[0.2em]">SKILLS</span>
                               </div>
                           </a>
 
@@ -577,7 +546,7 @@ export default function Projects() {
                   </div>
 
                   {/* Elegant Orbital Radar Globe */}
-                  <div className="relative mt-auto w-44 h-44 flex items-center justify-center opacity-100 group cursor-crosshair drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]">
+                  <div className="hidden lg:flex relative mt-auto w-44 h-44 items-center justify-center opacity-100 group cursor-crosshair drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]">
                       <div className="absolute inset-0 border border-white/[0.05] rounded-full"></div>
                       <div className="absolute inset-3 border border-dashed border-amber-500/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
                       <div className="absolute inset-6 border border-dotted border-white/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
