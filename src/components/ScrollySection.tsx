@@ -154,7 +154,11 @@ export default function ScrollySection() {
               transition={{ duration: 0.8, ease: [0.87, 0, 0.13, 1] }}
               className="absolute inset-0 z-10 pointer-events-auto"
             >
-              <SanskritAstraLoader onComplete={() => setExitPreloader(true)} />
+              <SanskritAstraLoader 
+                onComplete={() => setExitPreloader(true)} 
+                imagesReady={imagesReady} 
+                loadProgress={loadProgress} 
+              />
             </motion.div>
           </motion.div>
         )}

@@ -84,11 +84,11 @@ export default function NavigationParallax() {
             </div>
 
             {/* Interactive 3D Card Grid */}
-            <div className="relative z-10 flex flex-wrap justify-center gap-6 md:gap-10 max-w-[1400px] mx-auto px-6" style={{ perspective: "1200px" }}>
+            <div className="relative z-10 flex flex-wrap justify-center gap-6 md:gap-10 max-w-[1400px] mx-auto px-4 sm:px-6" style={{ perspective: "1200px" }}>
                 {images.map((item, idx) => (
                     <motion.div
                         key={idx}
-                        className="relative w-[280px] h-[180px] cursor-pointer rounded-xl overflow-hidden border border-zinc-800 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                        className="relative w-full max-w-[280px] sm:w-[280px] h-[160px] sm:h-[180px] cursor-pointer rounded-xl overflow-hidden border border-zinc-800 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
                         initial={{ rotateX: 20, y: 20, opacity: 0 }}
                         whileInView={{ rotateX: 0, y: 0, opacity: 1 }}
                         viewport={{ once: true, margin: "-100px" }}
@@ -145,14 +145,7 @@ export default function NavigationParallax() {
                                 ease: [0.25, 1, 0.5, 1], // Cinematic ease
                             }}
                             onAnimationComplete={() => {
-                                // Add a slight delay before navigating for impact
-                                setTimeout(() => {
-                                    if (selectedCard.link === '/') {
-                                        setSelectedCard(null); // Just close the overlay
-                                    } else {
-                                        router.push(selectedCard.link);
-                                    }
-                                }, 300);
+                                // Animation completes, wait for user to click enter
                             }}
                             className="bg-zinc-900 overflow-hidden flex items-center justify-center relative"
                         >
@@ -174,11 +167,21 @@ export default function NavigationParallax() {
                                 <h1 className="text-5xl md:text-[6rem] text-white font-cinzel font-black tracking-[0.3em] uppercase drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] text-center">
                                     {selectedCard.title}
                                 </h1>
-                                <div className="mt-8 flex items-center gap-4">
-                                    <div className="w-12 h-[2px] bg-indigo-500"></div>
-                                    <span className="font-mono text-indigo-300 text-sm tracking-[0.4em] uppercase">Initializing Protocol</span>
-                                    <div className="w-12 h-[2px] bg-indigo-500"></div>
-                                </div>
+                                <motion.button
+                                    onClick={() => {
+                                        if (selectedCard.link === '/') {
+                                            setSelectedCard(null);
+                                        } else {
+                                            router.push(selectedCard.link);
+                                        }
+                                    }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 1.5, duration: 0.5 }}
+                                    className="mt-12 px-10 py-4 border border-indigo-500/50 hover:bg-indigo-500/20 text-white tracking-[0.4em] font-orbitron font-bold uppercase text-xs md:text-sm rounded-full backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
+                                >
+                                    ENTER SYSTEM
+                                </motion.button>
                             </motion.div>
                         </motion.div>
                     </motion.div>

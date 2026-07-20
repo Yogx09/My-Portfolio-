@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import FloatingMobileNav from "@/components/FloatingMobileNav";
+import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -29,6 +30,7 @@ export default function RootLayout({
           {children}
         </SmoothScroll>
         <FloatingMobileNav />
+        <CustomCursor />
       </body>
     </html>
   );

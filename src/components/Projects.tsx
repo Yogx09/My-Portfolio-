@@ -260,7 +260,15 @@ export default function Projects() {
         mouseY = (e.clientY - window.innerHeight / 2);
     };
 
+    const handleDeviceOrientation = (e: DeviceOrientationEvent) => {
+        if (e.gamma !== null && e.beta !== null) {
+            mouseX = e.gamma * 20; 
+            mouseY = (e.beta - 45) * 20; 
+        }
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('deviceorientation', handleDeviceOrientation);
     window.addEventListener('resize', updateSize);
 
     const clock = new THREE.Clock();
@@ -327,6 +335,7 @@ export default function Projects() {
         cancelAnimationFrame(animationFrameId);
         observer.disconnect();
         window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('deviceorientation', handleDeviceOrientation);
         window.removeEventListener('resize', updateSize);
         if (container.contains(renderer.domElement)) {
             container.removeChild(renderer.domElement);
@@ -380,9 +389,9 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex justify-between items-start border-b border-white/10 pb-4 pt-6 px-8 md:px-12 md:pb-6 relative z-50 sticky top-0 bg-[#030508]/60 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+            className="flex justify-between items-start border-b border-white/10 pb-4 pt-6 px-4 sm:px-8 md:px-12 md:pb-6 relative z-50 sticky top-0 bg-[#030508]/60 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
           >
-              <div className="flex gap-6 items-center">
+              <div className="flex gap-4 sm:gap-6 items-center">
                   <div className="flex flex-col gap-1.5 justify-center">
                       <div className="h-0.5 w-12 bg-amber-400 mb-1 shadow-[0_0_15px_rgba(251,191,36,0.6)]"></div>
                       <div className="h-0.5 w-8 bg-white/40"></div>
@@ -403,7 +412,7 @@ export default function Projects() {
               </div>
           </motion.header>
 
-          <main className="flex-1 flex flex-col lg:flex-row mt-6 md:mt-10 gap-10 min-h-0 px-8 md:px-12">
+          <main className="flex-1 flex flex-col lg:flex-row mt-6 md:mt-10 gap-10 min-h-0 px-4 sm:px-8 md:px-12">
               
               {/* LEFT NAVIGATION PANE */}
               <motion.aside 
@@ -452,7 +461,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="flex-1 flex flex-col justify-center items-center relative text-center z-20 pr-14 lg:pr-0"
+                className="flex-1 flex flex-col justify-center items-center relative text-center z-20 pr-0 lg:pr-0"
               >
                   {/* Cyber-Avatar Container */}
                   <div className="relative mb-8 w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-amber-500/30 p-1 group shadow-[0_0_30px_rgba(251,191,36,0.1)] animate-[float_6s_ease-in-out_infinite]">

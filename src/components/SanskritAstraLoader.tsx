@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from "react";
 
 interface SanskritAstraLoaderProps {
   onComplete: () => void;
+  imagesReady: boolean;
+  loadProgress: number;
 }
 
-export default function SanskritAstraLoader({ onComplete }: SanskritAstraLoaderProps) {
+export default function SanskritAstraLoader({ onComplete, imagesReady, loadProgress }: SanskritAstraLoaderProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   // DOM element Refs for high-performance direct animations (matching user's script style)
@@ -697,12 +699,7 @@ export default function SanskritAstraLoader({ onComplete }: SanskritAstraLoaderP
             if (stepCycle <= cyclesToLock) {
               fElem.innerText = ancientBrahmiRuneMatrix[Math.floor(Math.random() * ancientBrahmiRuneMatrix.length)];
               fElem.className = `inline-block text-3xl md:text-4xl lg:text-[3.5rem] opacity-90 transform scale-100 ${colorClasses[dataIndex]} font-sans animate-pulse`;
-              fElem.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
               fElem.style.textShadow = '0px 0px 15px currentColor';
-              
-              if (audioEngineRef.current) {
-                audioEngineRef.current.playAstraGlitch();
-              }
             } else {
               lockFirstLetter(fElem, wordData[dataIndex].first, dataIndex);
               fElem.style.textShadow = 'none'; // Clear the inline text-shadow so the lock class handles it
@@ -785,9 +782,7 @@ export default function SanskritAstraLoader({ onComplete }: SanskritAstraLoaderP
       }
 
       setBootComplete(true);
-      setTimeout(() => {
-        onComplete();
-      }, 200);
+      // Wait for user to click the button
     };
 
     // Auto start preloader steps
@@ -943,7 +938,7 @@ export default function SanskritAstraLoader({ onComplete }: SanskritAstraLoaderP
           </div>
 
           {/* Interactive Lets Go Button */}
-          {bootComplete && (
+          {bootComplete && imagesReady && (
             <div className="overflow-hidden mt-12 flex justify-center">
               <button 
                 onClick={() => {
@@ -957,6 +952,15 @@ export default function SanskritAstraLoader({ onComplete }: SanskritAstraLoaderP
                 <span>[ ENTER PORTFOLIO ]</span>
                 <span className="animate-pulse">→</span>
               </button>
+            </div>
+          )}
+
+          {bootComplete && !imagesReady && (
+            <div className="overflow-hidden mt-12 flex justify-center">
+              <div className="px-10 py-3.5 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 font-orbitron text-xs md:text-sm tracking-[0.3em] font-bold uppercase flex items-center gap-3">
+                <span>[ DOWNLOADING NEURAL CACHE: {loadProgress}% ]</span>
+                <span className="animate-spin text-lg">⟳</span>
+              </div>
             </div>
           )}
 

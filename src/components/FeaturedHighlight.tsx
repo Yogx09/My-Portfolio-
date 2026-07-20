@@ -94,13 +94,13 @@ export default function FeaturedHighlight() {
       </div>
 
       {/* Floating UI Elements */}
-      <div className="absolute left-8 bottom-8 flex flex-col gap-2 font-mono text-[10px] text-stone-500 tracking-widest pointer-events-none">
+      <div className="absolute left-8 bottom-8 hidden md:flex flex-col gap-2 font-mono text-[10px] text-stone-500 tracking-widest pointer-events-none">
         <div>LAT: 45.912.88</div>
         <div>LNG: -12.441.90</div>
         <div className="text-amber-500/50 mt-2">SYNC_RATE: 99.9%</div>
       </div>
       
-      <div className="absolute right-8 top-8 w-24 h-24 border border-white/5 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite] pointer-events-none">
+      <div className="absolute right-8 top-8 w-24 h-24 hidden md:flex border border-white/5 rounded-full items-center justify-center animate-[spin_20s_linear_infinite] pointer-events-none">
         <div className="absolute top-0 w-2 h-2 bg-amber-500 rounded-full shadow-[0_0_10px_#f59e0b]"></div>
       </div>
     </section>

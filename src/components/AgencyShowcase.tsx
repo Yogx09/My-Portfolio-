@@ -44,6 +44,7 @@ export default function AgencyShowcase() {
               <div
                 key={service.id}
                 onMouseEnter={() => setHoveredService(service.id)}
+                onClick={() => setHoveredService(service.id)}
                 className={`relative flex flex-col justify-between border-r border-white/20 last:border-r-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden cursor-pointer ${
                   isActive ? "flex-[3]" : "flex-1"
                 }`}
