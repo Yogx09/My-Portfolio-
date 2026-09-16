@@ -23,7 +23,7 @@ export default function ScrollySection() {
   });
 
   useEffect(() => {
-    const isSkipped = window.location.hash === '#projects';
+    const isSkipped = window.location.hash === '#dashboard';
     if (isSkipped) {
         setIntroDone(true);
         setExitPreloader(true);
@@ -34,7 +34,7 @@ export default function ScrollySection() {
         
         // Scroll to projects if needed
         setTimeout(() => {
-            const el = document.getElementById('projects');
+            const el = document.getElementById('dashboard');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
         }, 100);
         return;
@@ -84,7 +84,7 @@ export default function ScrollySection() {
     const triggerAutoScroll = () => {
       if (window.scrollY < 50 && !isAutoScrolling && globalLenis) {
         isAutoScrolling = true;
-        globalLenis.scrollTo('#projects', {
+        globalLenis.scrollTo('#dashboard', {
           duration: 5.5, // Smooth, cinematic 5.5 second auto-play
           lock: true,
           onComplete: () => {

@@ -4,6 +4,7 @@ import AgencyShowcase from "@/components/AgencyShowcase";
 import TechMarquee from "@/components/TechMarquee";
 import NavigationParallax from "@/components/NavigationParallax";
 import FeaturedHighlight from "@/components/FeaturedHighlight";
+import LiquidAbout from "@/components/LiquidAbout";
 
 export default function Home() {
   return (
@@ -18,6 +19,9 @@ export default function Home() {
       
       {/* Zylo-Style 3D Agency Integration Below Dashboard */}
       <AgencyShowcase />
+
+      {/* Physics-based Liquid About Section */}
+      <LiquidAbout />
 
       {/* Dribbble-Style Magnetic Highlight Section */}
       <FeaturedHighlight />

@@ -345,7 +345,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="relative w-full flex flex-col bg-[#030508] font-jakarta cursor-crosshair overflow-x-hidden">
+    <section id="dashboard" className="relative w-full flex flex-col bg-[#030508] font-jakarta cursor-crosshair overflow-x-hidden">
       
       {/* 3D Dashboard Hero */}
       <div className="relative w-full h-screen overflow-hidden shrink-0 select-none text-stone-200">

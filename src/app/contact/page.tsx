@@ -22,7 +22,7 @@ export default function ContactPage() {
                     The spatial coordinates have been locked, awaiting content integration.
                 </p>
 
-                <Link href="/#projects" className="group flex items-center gap-3 text-indigo-400 hover:text-amber-400 transition-colors">
+                <Link href="/#dashboard" className="group flex items-center gap-3 text-indigo-400 hover:text-amber-400 transition-colors">
                     <ArrowLeft className="w-5 h-5 text-indigo-400 group-hover:-translate-x-1 transition-transform" />
                     <span className="font-bold tracking-[0.2em] text-xs uppercase">HOME</span>
                 </Link>
