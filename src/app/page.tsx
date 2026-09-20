@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import RetroNavbar from "@/components/retro/RetroNavbar";
-import RetroHeroSection from "@/components/retro/RetroHeroSection";
-import { NavTab } from "@/components/retro/RetroTerminalOS";
+import ScrollySection from "@/components/ScrollySection";
+import HeroSection, { NavTab } from "@/components/HeroSection";
 import AgencyShowcase from "@/components/AgencyShowcase";
 import TechMarquee from "@/components/TechMarquee";
 import NavigationParallax from "@/components/NavigationParallax";
@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#fafbfc] text-slate-900 min-h-screen relative selection:bg-amber-500/30 selection:text-amber-900">
-      {/* 1. Top Glassmorphic Navigation */}
+      {/* Top Glassmorphic Navigation Bar */}
       <RetroNavbar
         activeTab={activeTab}
         onSelectTab={handleTabSelect}
@@ -45,11 +45,14 @@ export default function Home() {
         }}
       />
 
-      {/* 2. Main Studio Hero: Same Curiosity Bigger Possibilities + 3D Ceramic Workstation Display */}
-      <RetroHeroSection
+      {/* 1. Landing Page Canvas Scrollytelling Sequence */}
+      <ScrollySection />
+
+      {/* 2. Main Studio Hero Page (Replacing Astra 3D) */}
+      <HeroSection
         activeTab={activeTab}
         onSelectTab={handleTabSelect}
-        onScrollToDashboard={() => scrollToSection("agency-showcase")}
+        onScrollToExplore={() => scrollToSection("agency-showcase")}
       />
 
       {/* 3. Infinite Tech Stack Marquee */}
