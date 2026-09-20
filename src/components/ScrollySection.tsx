@@ -84,8 +84,8 @@ export default function ScrollySection() {
     const triggerAutoScroll = () => {
       if (window.scrollY < 50 && !isAutoScrolling && globalLenis) {
         isAutoScrolling = true;
-        globalLenis.scrollTo('#dashboard', {
-          duration: 5.5, // Smooth, cinematic 5.5 second auto-play
+        globalLenis.scrollTo('#hero-section', {
+          duration: 4.5, // Smooth, cinematic auto-play
           lock: true,
           onComplete: () => {
             isAutoScrolling = false;
