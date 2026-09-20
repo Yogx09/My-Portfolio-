@@ -9,24 +9,25 @@ import LiquidAbout from "@/components/LiquidAbout";
 export default function Home() {
   return (
     <main className="bg-[#121212] text-white min-h-screen">
+      {/* 1. Scrollytelling Canvas Video Sequence */}
       <ScrollySection />
 
-      {/* Animated Infinite Tech Marquee */}
+      {/* 2. Animated Infinite Tech Marquee */}
       <TechMarquee />
 
-      {/* Main Dashboard */}
+      {/* 3. Main 3D Dashboard & Projects with 4-Diamond Radar */}
       <Projects />
       
-      {/* Zylo-Style 3D Agency Integration Below Dashboard */}
+      {/* 4. Zylo-Style 3D Agency Showcase */}
       <AgencyShowcase />
 
-      {/* Physics-based Liquid About Section */}
+      {/* 5. Physics-based Liquid About Section */}
       <LiquidAbout />
 
-      {/* Dribbble-Style Magnetic Highlight Section */}
+      {/* 6. Dribbble-Style Magnetic Highlight Section */}
       <FeaturedHighlight />
 
-      {/* 3D Cinematic Navigation Grid - Navigation Section */}
+      {/* 7. 3D Cinematic Navigation Grid - Nexus Contact Section */}
       <NavigationParallax />
     </main>
   );

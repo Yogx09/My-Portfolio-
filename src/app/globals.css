@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;900&family=Orbitron:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;900&family=Orbitron:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&family=Share+Tech+Mono&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #121212;
+  --background: #0d0f12;
   --foreground: #ffffff;
 }
 
@@ -18,12 +18,73 @@ body {
   font-family: var(--font-sans), sans-serif;
 }
 
-/* --- KALKI CHRONOS DECIPHER UTILITIES --- */
+/* --- RETRO & CYBERNETIC UTILITIES --- */
 
+.font-pixel { font-family: 'Press Start 2P', monospace; }
+.font-silkscreen { font-family: 'Silkscreen', monospace; }
+.font-vt323 { font-family: 'VT323', monospace; }
+.font-techmono { font-family: 'Share Tech Mono', monospace; }
 .font-cinzel-dec { font-family: 'Cinzel Decorative', serif; }
 .font-cinzel { font-family: 'Cinzel', serif; }
 .font-orbitron { font-family: 'Orbitron', sans-serif; }
 .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+/* CRT Scanlines & Screen Glass Effect */
+.crt-screen-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.45) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.04),
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 0, 255, 0.04)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+.crt-flicker {
+  animation: crtFlicker 0.15s infinite;
+}
+
+@keyframes crtFlicker {
+  0% { opacity: 0.99; }
+  50% { opacity: 1; }
+  100% { opacity: 0.985; }
+}
+
+.crt-glow {
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.75), 0 0 15px rgba(56, 189, 248, 0.45);
+}
+
+.crt-glow-green {
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.75), 0 0 15px rgba(74, 222, 128, 0.45);
+}
+
+.crt-glow-amber {
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.75), 0 0 15px rgba(251, 191, 36, 0.45);
+}
+
+.crt-turn-off {
+  animation: turnOff 0.45s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes turnOff {
+  0% { transform: scale(1, 1); filter: brightness(1); }
+  40% { transform: scale(1, 0.005); filter: brightness(3); }
+  100% { transform: scale(0, 0); filter: brightness(0); opacity: 0; }
+}
+
+.crt-turn-on {
+  animation: turnOn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes turnOn {
+  0% { transform: scale(0, 0); filter: brightness(0); opacity: 0; }
+  60% { transform: scale(1, 0.008); filter: brightness(2.5); opacity: 1; }
+  100% { transform: scale(1, 1); filter: brightness(1); opacity: 1; }
+}
 
 /* Gradients from Boot Sequence */
 .gold-metal-gradient {
