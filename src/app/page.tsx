@@ -22,7 +22,9 @@ export default function Home() {
 
   const handleTabSelect = (tab: NavTab) => {
     setActiveTab(tab);
-    if (tab === "projects") {
+    if (tab === "home") {
+      scrollToSection("hero-section");
+    } else if (tab === "projects") {
       scrollToSection("agency-showcase");
     } else if (tab === "about") {
       scrollToSection("liquid-about");
@@ -48,17 +50,17 @@ export default function Home() {
       {/* 1. Landing Page Canvas Scrollytelling Sequence */}
       <ScrollySection />
 
-      {/* 2. Main Studio Hero Page (Replacing Astra 3D) */}
-      <HeroSection
-        activeTab={activeTab}
-        onSelectTab={handleTabSelect}
-        onScrollToExplore={() => scrollToSection("agency-showcase")}
-      />
-
-      {/* 3. Infinite Tech Stack Marquee */}
+      {/* 2. Infinite Tech Stack Marquee (Between animated page and home page) */}
       <div id="skills-section">
         <TechMarquee />
       </div>
+
+      {/* 3. Main Studio Hero Page */}
+      <HeroSection
+        activeTab={activeTab}
+        onSelectTab={setActiveTab}
+        onScrollToExplore={() => scrollToSection("agency-showcase")}
+      />
 
       {/* 4. 3D Agency Showcase & Projects */}
       <div id="agency-showcase">

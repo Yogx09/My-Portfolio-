@@ -668,88 +668,51 @@ export default function RetroWorkstation3DCanvas({
         </div>
       </div>
 
-      {/* LUXURY WHITE & GOLD GLASSMORPHIC CONTROL BAR */}
-      <div className="w-full mt-2 p-3 rounded-2xl bg-white/90 border border-amber-400/40 shadow-[0_10px_35px_rgba(245,158,11,0.15)] flex flex-col gap-2.5 z-20 backdrop-blur-xl">
-        {/* Top Control Strip */}
-        <div className="flex items-center justify-between px-1">
-          {/* Status Indicators */}
-          <div className="flex items-center gap-3 text-xs font-mono">
-            <div className="flex items-center gap-1.5">
-              <span
-                className={`w-2.5 h-2.5 rounded-full ${
-                  isPoweredOn
-                    ? "bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.9)] animate-pulse"
-                    : "bg-slate-400"
-                }`}
-              />
-              <span className="text-[10px] text-slate-800 font-extrabold tracking-wider">CERAMIC WHITE & GOLD 5K</span>
-            </div>
-
-            <div className="hidden sm:flex items-center gap-1.5 text-slate-600">
-              <Sparkles size={12} className="text-amber-500" />
-              <span className="text-[10px] font-semibold text-amber-700">{currentTheme.name}</span>
-            </div>
+      {/* SLEEK FLOATING LUXURY STUDIO CONTROLS (GOOD VIBES ONLY - NO BULKY BAR) */}
+      <div className="w-full mt-3 flex items-center justify-center z-20 select-none">
+        <div className="inline-flex items-center gap-2 sm:gap-3 p-1.5 sm:p-2 rounded-full bg-white/85 hover:bg-white/95 backdrop-blur-2xl border border-amber-400/50 shadow-[0_8px_30px_rgba(245,158,11,0.18)] hover:shadow-[0_12px_40px_rgba(245,158,11,0.28)] transition-all duration-300">
+          {/* 1. 3D Rotate Hint Pill */}
+          <div className="px-3.5 py-1.5 rounded-full bg-amber-50/80 border border-amber-300/60 text-slate-800 text-[11px] font-mono flex items-center gap-1.5 font-bold">
+            <Crown size={13} className="text-amber-500 animate-pulse" />
+            <span>3D INTERACTIVE</span>
           </div>
 
-          {/* Precision Controls */}
-          <div className="flex items-center gap-2 font-mono">
-            <button
-              onClick={handleBrightnessChange}
-              className="px-2.5 py-1 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-400/40 text-amber-900 text-[10px] font-bold flex items-center gap-1.5 transition cursor-pointer shadow-sm"
-              title="Adjust HDR Luminance"
-            >
-              <Sun size={12} className="text-amber-500" />
-              <span>{Math.round(brightnessLevel * 100)}%</span>
-            </button>
+          <div className="w-[1px] h-5 bg-slate-200/80 hidden sm:block" />
 
-            {/* Cycle Rich Ambient Aura Light */}
-            <button
-              onClick={handleCycleAura}
-              className="px-2.5 py-1 rounded-xl bg-gradient-to-r from-amber-500/15 to-yellow-500/15 hover:from-amber-500/25 hover:to-yellow-500/25 border border-amber-400/40 text-amber-900 text-[10px] font-bold flex items-center gap-1.5 transition cursor-pointer shadow-sm"
-              title="Cycle Ambient Aura Lighting"
-            >
-              <Palette size={12} className="text-amber-500" />
-              <span>AURA THEME</span>
-            </button>
+          {/* 2. Aura Theme Switcher Button */}
+          <button
+            onClick={handleCycleAura}
+            className="px-3.5 py-1.5 rounded-full bg-white hover:bg-amber-50/80 border border-slate-200 hover:border-amber-400/60 text-slate-800 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+            title="Cycle Ambient Aura Lighting"
+          >
+            <Sparkles size={13} className="text-amber-500" />
+            <span className="hidden sm:inline text-slate-500 font-semibold">Aura:</span>
+            <span className="text-amber-700 font-extrabold">{currentTheme.name.split("&")[0].trim()}</span>
+          </button>
 
-            {/* Power Sleep/Wake Button */}
-            <button
-              onClick={handlePowerToggle}
-              className={`px-3.5 py-1 rounded-xl border font-bold text-[10px] flex items-center gap-1.5 transition-all cursor-pointer shadow-sm ${
-                isPoweredOn
-                  ? "bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 border-amber-300 text-slate-950 font-extrabold shadow-[0_0_15px_rgba(245,158,11,0.4)] hover:scale-105"
-                  : "bg-slate-200 border-slate-300 text-slate-600"
-              }`}
-            >
-              <Power size={11} />
-              <span>{isPoweredOn ? "DISPLAY ON" : "SLEEP"}</span>
-            </button>
-          </div>
-        </div>
+          {/* 3. HDR Luminance / Brightness Button */}
+          <button
+            onClick={handleBrightnessChange}
+            className="px-3 py-1.5 rounded-full bg-white hover:bg-amber-50/80 border border-slate-200 hover:border-amber-400/60 text-slate-800 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
+            title="Adjust Retina Luminance"
+          >
+            <Sun size={13} className="text-amber-500" />
+            <span>{Math.round(brightnessLevel * 100)}%</span>
+          </button>
 
-        {/* Quick Keyboard Shortcuts Tray with Gold Buttons */}
-        <div className="flex items-center justify-between gap-1 overflow-x-auto pt-1 border-t border-slate-200 font-mono">
-          {[
-            { label: "ESC", color: "text-rose-700 bg-rose-50 border-rose-200" },
-            { label: "1:HOME", key: "1" },
-            { label: "2:PROJ", key: "2" },
-            { label: "3:ABOUT", key: "3" },
-            { label: "4:SKILLS", key: "4" },
-            { label: "5:EXP", key: "5" },
-            { label: "6:BLOG", key: "6" },
-            { label: "7:CONTACT", key: "7" },
-            { label: "GOLDEN AURA ✨", color: "text-amber-900 bg-amber-50 border-amber-300 font-bold", action: handleCycleAura },
-          ].map((k) => (
-            <button
-              key={k.label}
-              onClick={() => handleKeyPress(k.key || k.label, k.action)}
-              className={`px-2.5 py-1 rounded-xl text-[9px] font-bold transition-all active:scale-95 cursor-pointer select-none shadow-sm ${
-                activeKey === (k.key || k.label) ? "scale-95 bg-amber-500 text-slate-950" : ""
-              } ${k.color || "text-slate-700 bg-slate-100 hover:bg-amber-50 border border-slate-200 hover:border-amber-400/50"}`}
-            >
-              {k.label}
-            </button>
-          ))}
+          {/* 4. Display Power / Sleep Toggle Button */}
+          <button
+            onClick={handlePowerToggle}
+            className={`px-4 py-1.5 rounded-full text-xs font-extrabold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95 ${
+              isPoweredOn
+                ? "bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-slate-950 shadow-[0_4px_15px_rgba(245,158,11,0.4)]"
+                : "bg-slate-200 hover:bg-slate-300 text-slate-600 border border-slate-300"
+            }`}
+            title="Toggle Studio Display Power"
+          >
+            <Power size={12} strokeWidth={2.5} />
+            <span>{isPoweredOn ? "DISPLAY ON" : "SLEEP"}</span>
+          </button>
         </div>
       </div>
     </div>

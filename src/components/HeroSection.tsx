@@ -24,97 +24,95 @@ export default function HeroSection({
   const stats = [
     { value: "5+", label: "Projects Built" },
     { value: "2+", label: "Years Learning" },
-    { value: "100%", label: "Passion Driven" },
+    { value: "100%", label: "Dedication" },
     { value: "∞", label: "Ideas Ahead" },
   ];
 
   const sections = ["01", "02", "03", "04"];
 
   return (
-    <section id="hero-section" className="relative min-h-screen w-full bg-[#fafbfc] text-slate-900 pt-24 pb-16 px-6 sm:px-12 flex flex-col justify-between overflow-hidden">
-      {/* Background Soft Ambient Light */}
+    <section
+      id="hero-section"
+      className="relative min-h-screen w-full bg-[#fafbfc] text-slate-900 pt-24 pb-16 px-6 sm:px-12 flex flex-col justify-between overflow-hidden"
+    >
+      {/* Subtle Warm Ambient Glow */}
       <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-amber-400/[0.08] rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-yellow-300/[0.05] rounded-full blur-[120px] pointer-events-none" />
 
       {/* Main Container Grid */}
-      <div className="relative z-10 max-w-[1600px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center my-auto">
+      <div className="relative z-15 max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center my-auto">
         {/* LEFT COLUMN: HERO HEADLINE & ACTIONS */}
-        <div className="lg:col-span-5 flex flex-col justify-center space-y-7 select-none">
-          {/* Greeting Pill */}
-          <div className="inline-flex items-center gap-2 w-fit px-4 py-1.5 rounded-full bg-[#fef3c7]/60 border border-amber-300/60 text-amber-900 text-xs font-semibold shadow-2xs">
+        <div className="lg:col-span-5 flex flex-col justify-center select-none">
+          {/* Hello Pill */}
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-2 border border-[#f5d993] bg-[rgba(255,249,230,0.9)] rounded-full text-[13px] font-semibold text-[#080b16] w-fit mb-5 shadow-xs">
             <span>👋 Hello, I&apos;m Yogesh</span>
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
+            <span className="w-2 h-2 rounded-full bg-[#f5a400] shadow-[0_0_0_5px_rgba(245,164,0,0.1)]" />
           </div>
 
-          {/* Bold Typography */}
-          <div className="space-y-0.5 font-sans">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-extrabold tracking-tight text-slate-950 leading-[1.05]">
-              Same
-            </h1>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-extrabold tracking-tight text-slate-950 leading-[1.05]">
-              Curiosity
-            </h1>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-extrabold tracking-tight bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 bg-clip-text text-transparent leading-[1.05] drop-shadow-[0_4px_25px_rgba(245,158,11,0.25)]">
-              Bigger
-            </h1>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-extrabold tracking-tight text-slate-950 leading-[1.05]">
-              Possibilities
-            </h1>
+          {/* Hero Title */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.2rem] font-bold tracking-tight text-[#080b16] leading-[0.92]">
+            Same<br />
+            Curiosity<br />
+            <span className="text-[#f5a400]">Bigger</span><br />
+            Possibilities
+          </h1>
+
+          {/* Subtitle with Separators */}
+          <div className="flex items-center gap-3.5 mt-7 text-base font-bold text-[#080b16]">
+            <span>Developer</span>
+            <span className="w-[2px] h-[18px] bg-[#f5a400]" />
+            <span>Problem Solver</span>
+            <span className="w-[2px] h-[18px] bg-[#f5a400]" />
+            <span>Builder</span>
           </div>
 
-          {/* Subheading with Gold Dividers */}
-          <div className="space-y-2 max-w-lg">
-            <div className="text-sm sm:text-base font-semibold text-slate-800 flex items-center gap-3">
-              <span>Developer</span>
-              <span className="text-amber-500 font-bold">|</span>
-              <span>Problem Solver</span>
-              <span className="text-amber-500 font-bold">|</span>
-              <span>Builder</span>
-            </div>
-            <p className="text-sm sm:text-base text-slate-500 leading-relaxed font-normal">
-              I turn ideas into real world high-impact digital experiences with code, creativity, and precision engineering.
-            </p>
-          </div>
+          {/* Description */}
+          <p className="max-w-[520px] mt-3.5 text-[#667085] text-base leading-relaxed">
+            I turn ideas into real-world high-impact digital experiences with code, creativity, and precision engineering.
+          </p>
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            {/* View My Work Button */}
+          {/* Buttons */}
+          <div className="flex flex-wrap items-center gap-3.5 mt-7">
             <button
               onClick={() => {
                 retroAudio.playBeep(1200, 0.08);
                 onSelectTab("projects");
                 if (onScrollToExplore) onScrollToExplore();
               }}
-              className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-slate-950 font-bold text-sm flex items-center gap-2 shadow-[0_10px_25px_rgba(245,158,11,0.35)] hover:shadow-[0_15px_35px_rgba(245,158,11,0.5)] hover:scale-105 transition-all duration-300 cursor-pointer"
+              className="px-6 py-3.5 rounded-2xl bg-gradient-to-br from-[#ffb000] to-[#f39a00] text-[#080b16] font-bold text-sm shadow-[0_15px_30px_rgba(245,164,0,0.25)] hover:shadow-[0_20px_40px_rgba(245,164,0,0.35)] hover:-translate-y-1 transition-all duration-300 cursor-pointer flex items-center gap-2"
             >
-              <span>View My Work</span>
-              <ArrowRight size={16} />
+              <span>View My Work →</span>
             </button>
 
-            {/* Get In Touch Button */}
             <button
               onClick={() => {
                 retroAudio.playBeep(880, 0.06);
                 onSelectTab("contact");
               }}
-              className="px-8 py-3.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-800 font-bold text-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer hover:scale-105"
+              className="px-6 py-3.5 rounded-2xl border border-[#dfe3e8] bg-white text-[#171c28] font-bold text-sm hover:-translate-y-1 hover:border-[#f5a400] transition-all duration-300 shadow-xs cursor-pointer"
             >
               Get In Touch
             </button>
           </div>
 
-          {/* Bottom Stats Row */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-slate-200/80">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="space-y-0.5 text-left">
-                <div className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
-                  {stat.value}
-                </div>
-                <div className="text-[11px] text-slate-500 font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+          {/* Stats Row */}
+          <div className="flex gap-0 mt-10 pt-6 border-t border-[#e8ebef] max-w-full sm:w-[570px]">
+            <div className="flex-1 border-r border-[#e5e7eb] pr-5 mr-5">
+              <div className="font-bold text-2xl sm:text-3xl text-[#080b16]">5+</div>
+              <div className="text-xs text-[#89919e] mt-1 font-medium">Projects Built</div>
+            </div>
+            <div className="flex-1 border-r border-[#e5e7eb] pr-5 mr-5">
+              <div className="font-bold text-2xl sm:text-3xl text-[#080b16]">2+</div>
+              <div className="text-xs text-[#89919e] mt-1 font-medium">Years Learning</div>
+            </div>
+            <div className="flex-1 border-r border-[#e5e7eb] pr-5 mr-5">
+              <div className="font-bold text-2xl sm:text-3xl text-[#080b16]">100%</div>
+              <div className="text-xs text-[#89919e] mt-1 font-medium">Dedication</div>
+            </div>
+            <div className="flex-1">
+              <div className="font-bold text-2xl sm:text-3xl text-[#080b16]">∞</div>
+              <div className="text-xs text-[#89919e] mt-1 font-medium">Ideas Ahead</div>
+            </div>
           </div>
         </div>
 
