@@ -2,12 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import * as THREE from "three";
 import { ArrowLeft } from "lucide-react";
 
 export default function ExperiencePage() {
+    const router = useRouter();
     const containerRef = useRef<HTMLDivElement>(null);
     const [loading, setLoading] = useState(true);
+    const [activeSector, setActiveSector] = useState<{ title: string; route: string; desc: string } | null>(null);
 
     useEffect(() => {
         if (!containerRef.current) return;
@@ -277,6 +280,7 @@ export default function ExperiencePage() {
                 if (obj.userData.isThemeHitBox) {
                     isEntering = true;
                     activeThemeGroup = obj.userData.parentGroup;
+                    setActiveSector(obj.userData.sec);
                     if (hoveredTheme) document.body.style.cursor = "default";
                     break;
                 }
@@ -285,6 +289,7 @@ export default function ExperiencePage() {
 
         const handleClose = () => {
             isEntering = false;
+            setActiveSector(null);
             const btn = document.getElementById("close-button");
             const msg = document.getElementById("construction-message");
             if (btn) btn.style.display = "none";
@@ -497,20 +502,30 @@ export default function ExperiencePage() {
                 </div>
             </div>
 
-            <div id="construction-message" style={{ display: 'none' }} className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center z-40 pointer-events-none animate-in slide-in-from-bottom-8 fade-in duration-700 w-[90%] max-w-sm">
-                <div className="bg-white/90 backdrop-blur-md border border-slate-200 px-6 sm:px-8 py-6 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.1)] text-center relative overflow-hidden">
+            <div id="construction-message" style={{ display: 'none' }} className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center z-40 pointer-events-auto animate-in slide-in-from-bottom-8 fade-in duration-700 w-[90%] max-w-sm">
+                <div className="bg-white/95 backdrop-blur-md border border-slate-200 px-6 sm:px-8 py-6 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] text-center relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-cyan-400"></div>
                     <div className="w-12 h-12 rounded-full bg-cyan-50 flex items-center justify-center mx-auto mb-4">
                         <div className="w-3 h-3 bg-cyan-400 rounded-full animate-ping"></div>
                         <div className="w-3 h-3 bg-cyan-500 rounded-full absolute"></div>
                     </div>
-                    <h2 className="text-slate-900 font-black tracking-[0.15em] mb-2 text-[10px] sm:text-sm uppercase">SECTOR UNDER CONSTRUCTION</h2>
-                    <p className="text-slate-500 text-[10px] sm:text-xs tracking-wide max-w-xs leading-relaxed mx-auto">The internal pathways for this section are currently being synthesized. Please check back later.</p>
+                    <h2 className="text-slate-900 font-black tracking-[0.15em] mb-2 text-xs sm:text-sm uppercase">{activeSector?.title || "EXPLORE ARCHIVE"}</h2>
+                    <p className="text-slate-500 text-[10px] sm:text-xs tracking-wide max-w-xs leading-relaxed mx-auto mb-5">{activeSector?.desc || "Access the interactive digital architecture record."}</p>
+                    
+                    {activeSector && (
+                        <button 
+                            onClick={() => router.push(activeSector.route)}
+                            className="w-full py-2.5 px-6 rounded-full bg-slate-950 hover:bg-slate-800 text-cyan-400 font-bold text-xs tracking-widest uppercase transition-all shadow-md flex items-center justify-center gap-2 mb-2"
+                        >
+                            <span>Open {activeSector.title}</span>
+                            <span className="text-white">→</span>
+                        </button>
+                    )}
                 </div>
             </div>
 
             <div id="close-button" style={{ display: 'none' }} className="absolute bottom-12 w-full flex justify-center z-50 pointer-events-auto animate-in fade-in zoom-in duration-500">
-                <button className="px-10 py-4 rounded-full bg-slate-900 text-white text-xs font-bold tracking-[0.2em] hover:bg-cyan-600 hover:scale-105 transition-all shadow-2xl border border-slate-700">
+                <button className="px-10 py-3.5 rounded-full bg-slate-900 text-white text-xs font-bold tracking-[0.2em] hover:bg-cyan-600 hover:scale-105 transition-all shadow-2xl border border-slate-700">
                     CLOSE RECORD
                 </button>
             </div>

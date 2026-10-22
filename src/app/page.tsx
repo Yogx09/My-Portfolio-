@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RetroNavbar from "@/components/retro/RetroNavbar";
 import ScrollySection from "@/components/ScrollySection";
 import HeroSection, { NavTab } from "@/components/HeroSection";
@@ -20,10 +20,21 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    if (window.location.hash === "#dashboard" || window.location.hash === "#hero-section") {
+      setTimeout(() => {
+        const el = document.getElementById("dashboard");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 150);
+    }
+  }, []);
+
   const handleTabSelect = (tab: NavTab) => {
     setActiveTab(tab);
     if (tab === "home") {
-      scrollToSection("hero-section");
+      scrollToSection("dashboard");
     } else if (tab === "projects") {
       scrollToSection("agency-showcase");
     } else if (tab === "about") {
@@ -32,6 +43,8 @@ export default function Home() {
       scrollToSection("contact-section");
     } else if (tab === "skills") {
       scrollToSection("skills-section");
+    } else if (tab === "experience") {
+      window.location.href = "/experience";
     }
   };
 
@@ -47,7 +60,7 @@ export default function Home() {
         }}
       />
 
-      {/* 1. Landing Page Canvas Scrollytelling Sequence */}
+      {/* 1. Landing Page Canvas Scrollytelling Sequence with Sanskrit Astra Loader */}
       <ScrollySection />
 
       {/* 2. Infinite Tech Stack Marquee (Between animated page and home page) */}
@@ -55,12 +68,14 @@ export default function Home() {
         <TechMarquee />
       </div>
 
-      {/* 3. Main Studio Hero Page */}
-      <HeroSection
-        activeTab={activeTab}
-        onSelectTab={setActiveTab}
-        onScrollToExplore={() => scrollToSection("agency-showcase")}
-      />
+      {/* 3. Main Studio Hero Page with 3D Computer Workstation (Home / Dashboard) */}
+      <div id="dashboard" className="scroll-mt-6">
+        <HeroSection
+          activeTab={activeTab}
+          onSelectTab={handleTabSelect}
+          onScrollToExplore={() => scrollToSection("agency-showcase")}
+        />
+      </div>
 
       {/* 4. 3D Agency Showcase & Projects */}
       <div id="agency-showcase">

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Sun, Moon, ArrowRight, Bookmark } from "lucide-react";
+import { Sun, Moon, ArrowRight } from "lucide-react";
 import { NavTab } from "./RetroTerminalOS";
 import { retroAudio } from "./RetroAudio";
 
@@ -19,10 +19,9 @@ export default function RetroNavbar({
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Only show navbar when user scrolls down past the landing intro
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 400) {
+      if (window.scrollY > 350 || window.location.hash === "#dashboard") {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -39,7 +38,7 @@ export default function RetroNavbar({
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
     { id: "about", label: "About" },
-    { id: "blog", label: "Blog" },
+    { id: "experience", label: "Experience" },
     { id: "contact", label: "Contact" },
   ];
 

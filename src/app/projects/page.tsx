@@ -454,7 +454,7 @@ export default function ProjectsPage() {
       <FilmGrain />
       <PillNav />
 
-      {/* Top Floating Back Button */}
+      {/* Top Floating Back Button (Redirects to Computer Workstation) */}
       <Link 
         href="/#dashboard" 
         className="fixed top-6 left-6 z-[100] group flex items-center gap-3 px-5 py-2.5 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full hover:bg-white/10 transition-colors shadow-lg"

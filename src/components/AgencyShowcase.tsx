@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Focus, Atom, Gamepad2, Code2, Globe, Cpu, Terminal, ShieldAlert, Trophy, Film } from "lucide-react";
 
@@ -85,10 +86,13 @@ export default function AgencyShowcase() {
                         {service.desc}
                       </p>
                       
-                      <button className="group/btn relative self-start inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full font-orbitron text-xs font-bold tracking-widest uppercase hover:bg-white/20 hover:border-white/50 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-300">
-                        <span className="relative z-10">Explore</span>
+                      <Link 
+                        href="/projects"
+                        className="group/btn relative self-start inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full font-orbitron text-xs font-bold tracking-widest uppercase hover:bg-white/20 hover:border-white/50 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-300"
+                      >
+                        <span className="relative z-10">Explore All Projects</span>
                         <div className="w-4 h-[2px] bg-cyan-400 group-hover/btn:w-8 group-hover/btn:bg-yellow-400 transition-all duration-500"></div>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                   
@@ -121,43 +125,43 @@ export default function AgencyShowcase() {
           
           <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none pb-6 md:pb-0 pr-6 md:pr-0 hide-scrollbar grid-cols-2 grid-rows-3 gap-4 md:gap-6 md:h-full md:min-h-[700px] w-full items-stretch">
              {/* AgroVise (CNN) */}
-             <div className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 relative cursor-pointer border border-white/10 hover:border-emerald-400/50">
+             <Link href="/projects#agrovise" className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 relative cursor-pointer border border-white/10 hover:border-emerald-400/50 block">
                <div className="absolute inset-0 bg-gradient-to-t from-[#5a0b91]/90 to-transparent z-10"></div>
                <img src="https://images.unsplash.com/photo-1530836369250-ef71a3a5a4fda?q=80&w=800&auto=format&fit=crop" alt="AgroVise Plant AI" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                <div className="absolute bottom-4 left-4 z-20 flex flex-col">
                  <div className="font-orbitron font-bold text-sm tracking-widest text-emerald-300 drop-shadow-md">AGROVISE</div>
                  <div className="font-jakarta text-[9px] tracking-widest text-white/70 mt-1 uppercase">CNN Plant AI</div>
                </div>
-             </div>
+             </Link>
              
              {/* ESP32 Safety Systems */}
-             <div className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#7010b3] flex flex-col items-center justify-center relative cursor-pointer border border-white/10 hover:border-amber-400/50">
+             <Link href="/projects#prosthetic" className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#7010b3] flex flex-col items-center justify-center relative cursor-pointer border border-white/10 hover:border-amber-400/50">
                <ShieldAlert className="w-16 h-16 text-amber-400 mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
                <div className="font-orbitron font-bold text-sm tracking-widest text-amber-400 text-center">ESP32 SAFETY<br/><span className="text-[9px] text-amber-400/70">IOT SYSTEMS</span></div>
-             </div>
+             </Link>
              
              {/* Arch Linux AI Assistant */}
-             <div className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-2 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#0d1117] flex flex-col items-center justify-center p-8 relative cursor-pointer border border-white/10 hover:border-cyan-400/50">
+             <Link href="/projects#oreo" className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-2 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#0d1117] flex flex-col items-center justify-center p-8 relative cursor-pointer border border-white/10 hover:border-cyan-400/50 block">
                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1600&auto=format&fit=crop')] opacity-20 bg-cover bg-center group-hover:opacity-40 transition-opacity duration-500"></div>
                <Terminal className="w-12 h-12 text-cyan-400 mb-3 relative z-10 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)] group-hover:scale-110 transition-transform duration-500" />
                <div className="text-3xl md:text-5xl font-black text-cyan-300 drop-shadow-[0_0_20px_rgba(34,211,238,0.6)] group-hover:scale-105 transition-transform duration-500 mb-2 relative z-10 font-orbitron">ARCH AI</div>
                <div className="font-jakarta tracking-[0.4em] text-xs text-white/70 relative z-10">RESTRICTED VIRTUAL ASSISTANT</div>
-             </div>
+             </Link>
              
              {/* Full-Stack Web (IBM) */}
-             <div className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#5a0b91] flex items-end justify-center relative cursor-pointer border border-white/10 hover:border-purple-400/50">
+             <Link href="/projects#stockpulse" className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#5a0b91] flex items-end justify-center relative cursor-pointer border border-white/10 hover:border-purple-400/50 block">
                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="Full Stack Code" className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
                <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
                  <Code2 className="w-12 h-12 text-purple-300 mb-2" />
                  <div className="font-orbitron font-bold text-xs tracking-widest text-purple-300 text-center">IBM INTERNSHIP<br/><span className="text-[9px] text-purple-300/70">FULL-STACK AGILE</span></div>
                </div>
-             </div>
+             </Link>
              
              {/* Hackathons & Cinematic Docs */}
-             <div className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#8b14db] flex flex-col items-center justify-center relative cursor-pointer border border-white/10 hover:border-pink-400/50">
+             <Link href="/projects" className="group w-[85vw] md:w-auto h-[400px] md:h-auto shrink-0 snap-center md:col-span-1 md:row-span-1 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-500 bg-[#8b14db] flex flex-col items-center justify-center relative cursor-pointer border border-white/10 hover:border-pink-400/50">
                <Film className="w-16 h-16 text-pink-300 mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
                <div className="font-orbitron font-bold text-sm tracking-widest text-pink-300 text-center">CINEMATIC<br/><span className="text-[9px] text-pink-300/70">AI DOCUMENTARIES</span></div>
-             </div>
+             </Link>
           </div>
         </div>
 
@@ -183,7 +187,7 @@ export default function AgencyShowcase() {
               <Cpu className="w-12 h-12 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]" />
             </motion.div>
             
-            <div className="relative w-full max-w-sm aspect-square rounded-full shadow-[0_30px_60px_rgba(0,0,0,0.5)] bg-white/5 backdrop-blur-xl border border-white/20 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-700 cursor-pointer group">
+            <Link href="/projects#prosthetic" className="relative w-full max-w-sm aspect-square rounded-full shadow-[0_30px_60px_rgba(0,0,0,0.5)] bg-white/5 backdrop-blur-xl border border-white/20 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-700 cursor-pointer group block">
                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#5a0b91]/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                <img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=1000&auto=format&fit=crop" alt="AI Prosthetic Hand" className="absolute inset-0 w-full h-full object-cover rounded-full mix-blend-overlay opacity-50" />
                
@@ -191,7 +195,7 @@ export default function AgencyShowcase() {
                  <div className="font-orbitron font-black text-2xl tracking-widest text-cyan-300 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] mb-2">AI PROSTHETIC</div>
                  <div className="font-jakarta text-xs tracking-[0.3em] text-white/80">HARDWARE INTEGRATION</div>
                </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

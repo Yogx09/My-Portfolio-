@@ -437,7 +437,7 @@ export default function SkillsPage() {
         .custom-scrollbar::-webkit-scrollbar { width: 6px; } .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; } .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; } .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
       `}} />
 
-      {/* Return Home Button */}
+      {/* Return Home Button (Redirects back to Computer Workstation) */}
       <Link href="/#dashboard" className="fixed top-6 left-6 z-[200] bg-slate-900/50 backdrop-blur-md border border-white/20 shadow-lg rounded-full px-5 py-2.5 flex items-center gap-3 hover:bg-white/10 hover:border-white/50 hover:scale-105 transition-all group">
         <i className="fa-solid fa-arrow-left text-white group-hover:-translate-x-1 transition-transform"></i>
         <span className="text-white font-bold text-xs tracking-widest uppercase">HOME</span>

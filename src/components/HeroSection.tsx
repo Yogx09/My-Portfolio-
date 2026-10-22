@@ -43,10 +43,16 @@ export default function HeroSection({
       <div className="relative z-15 max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center my-auto">
         {/* LEFT COLUMN: HERO HEADLINE & ACTIONS */}
         <div className="lg:col-span-5 flex flex-col justify-center select-none">
-          {/* Hello Pill */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-2 border border-[#f5d993] bg-[rgba(255,249,230,0.9)] rounded-full text-[13px] font-semibold text-[#080b16] w-fit mb-5 shadow-xs">
-            <span>👋 Hello, I&apos;m Yogesh</span>
-            <span className="w-2 h-2 rounded-full bg-[#f5a400] shadow-[0_0_0_5px_rgba(245,164,0,0.1)]" />
+          {/* Status & Location Pill (Explicitly marking this section as Home) */}
+          <div className="flex items-center gap-2 mb-4 flex-wrap">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-slate-900/10 bg-slate-950 text-amber-400 rounded-full text-xs font-mono font-bold tracking-wider shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+              <span>HOME // WORKSTATION</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#f5d993] bg-[rgba(255,249,230,0.9)] rounded-full text-xs font-semibold text-[#080b16] shadow-xs">
+              <span>👋 Hello, I&apos;m Yogesh</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#f5a400]" />
+            </div>
           </div>
 
           {/* Hero Title */}

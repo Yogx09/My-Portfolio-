@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { MousePointerClick } from 'lucide-react';
+import { MousePointerClick, X } from 'lucide-react';
 
 export default function NavigationParallax() {
     const router = useRouter();
@@ -164,6 +164,13 @@ export default function NavigationParallax() {
                                 transition={{ delay: 0.4, duration: 1 }}
                                 className="absolute inset-0 flex flex-col items-center justify-center bg-black/40"
                             >
+                                <button
+                                    onClick={() => setSelectedCard(null)}
+                                    className="absolute top-8 right-8 z-50 p-3 rounded-full bg-black/60 hover:bg-black/90 text-white/80 hover:text-white border border-white/20 transition-all cursor-pointer backdrop-blur-md"
+                                    title="Close Preview"
+                                >
+                                    <X className="w-6 h-6" />
+                                </button>
                                 <h1 className="text-5xl md:text-[6rem] text-white font-cinzel font-black tracking-[0.3em] uppercase drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] text-center">
                                     {selectedCard.title}
                                 </h1>
