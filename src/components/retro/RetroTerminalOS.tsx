@@ -24,7 +24,7 @@ import {
   ShieldCheck,
   Zap
 } from "lucide-react";
-import SpiderHeroView from "./SpiderHeroView";
+import WavingHeroView from "./WavingHeroView";
 import { retroAudio } from "./RetroAudio";
 
 export type NavTab = "home" | "projects" | "about" | "skills" | "experience" | "blog" | "contact";
@@ -95,7 +95,7 @@ export default function RetroTerminalOS({
   ];
 
   const sidebarNavItems = [
-    { id: "home" as NavTab, label: "Home", icon: Home, badge: "SPIDER" },
+    { id: "home" as NavTab, label: "Home", icon: Home, badge: "POSTER" },
     { id: "about" as NavTab, label: "About Me", icon: User, badge: "BIO" },
     { id: "skills" as NavTab, label: "Skills", icon: Code2, badge: "MATRIX" },
     { id: "projects" as NavTab, label: "Projects", icon: LayoutGrid, badge: "BUILDS" },
@@ -121,7 +121,7 @@ export default function RetroTerminalOS({
           </div>
           <span className="text-slate-300 font-mono text-xs">|</span>
           <span className="text-[11px] font-mono text-slate-500 hidden sm:inline-block tracking-wider font-semibold">
-            v3.5 • SPIDER ENGINE • 60 FPS
+            v3.5 • RETRO ENGINE • 60 FPS
           </span>
         </div>
 
@@ -235,10 +235,10 @@ export default function RetroTerminalOS({
           activeTab === "home" ? "p-0" : "p-5 sm:p-6"
         }`}>
           {/* ============================================================ */}
-          {/* TAB 1: FRONT SCREEN / FULL SPIDER-MAN THEMED HOME VIEW */}
+          {/* TAB 1: FRONT SCREEN / WAVING PORTFOLIO LANDING POSTER VIEW */}
           {/* ============================================================ */}
           {activeTab === "home" && (
-            <SpiderHeroView onSwitchTab={handleTabChange} />
+            <WavingHeroView onSwitchTab={handleTabChange} />
           )}
 
           {/* ============================================================ */}

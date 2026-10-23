@@ -47,6 +47,7 @@ export default function Overlay({ scrollYProgress, introProgress, introDone }: O
     <>
       {/* Persistent Left Sidebar Social Links for the First Sequence */}
       <motion.div 
+        suppressHydrationWarning
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1, duration: 1 }}
@@ -70,6 +71,7 @@ export default function Overlay({ scrollYProgress, introProgress, introDone }: O
       </motion.div>
 
       <motion.div 
+        suppressHydrationWarning
         style={{ opacity: globalOpacity }}
         className="absolute inset-0 pointer-events-none z-50"
       >

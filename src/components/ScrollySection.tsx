@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useScroll, animate, useMotionValue, AnimatePresence, motion } from "framer-motion";
 import ScrollyCanvas from "./ScrollyCanvas";
 import Overlay from "./Overlay";
-import SanskritAstraLoader from "./SanskritAstraLoader";
+import WavingPreloader from "./WavingPreloader";
 import { globalLenis } from "./SmoothScroll";
 
 export default function ScrollySection() {
@@ -127,34 +127,34 @@ export default function ScrollySection() {
       <AnimatePresence>
         {!exitPreloader && (
           <motion.div 
-            className="fixed inset-0 z-50 flex pointer-events-none overflow-hidden"
+            className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden"
           >
-            {/* Left Portal Gate Monolith */}
+            {/* Left Portal Gate Monolith - Swiss Paper Aesthetic */}
             <motion.div 
               exit={{ x: "-100%" }}
               transition={{ 
-                duration: 1.2, 
+                duration: 1.1, 
                 ease: [0.87, 0, 0.13, 1] 
               }}
-              className="w-1/2 h-full bg-[#030305] border-r border-teal-500/10"
+              className="absolute left-0 top-0 w-1/2 h-full bg-[#f6f4f0] border-r-2 border-[#e5262c]/20"
             />
-            {/* Right Portal Gate Monolith */}
+            {/* Right Portal Gate Monolith - Swiss Paper Aesthetic */}
             <motion.div 
               exit={{ x: "100%" }}
               transition={{ 
-                duration: 1.2, 
+                duration: 1.1, 
                 ease: [0.87, 0, 0.13, 1] 
               }}
-              className="w-1/2 h-full bg-[#030305] border-l border-teal-500/10"
+              className="absolute right-0 top-0 w-1/2 h-full bg-[#f6f4f0] border-l-2 border-[#e5262c]/20"
             />
 
-            {/* The Sanskrit Astra Boot Sequence Overlay with high-fidelity depth-of-field dissolve */}
+            {/* The Waving Hand Preloader Sequence with monoline percentage gauge */}
             <motion.div 
-              exit={{ opacity: 0, scale: 0.95, filter: "blur(15px)" }}
+              exit={{ opacity: 0, scale: 0.97, filter: "blur(12px)" }}
               transition={{ duration: 0.8, ease: [0.87, 0, 0.13, 1] }}
               className="absolute inset-0 z-10 pointer-events-auto"
             >
-              <SanskritAstraLoader 
+              <WavingPreloader 
                 onComplete={() => setExitPreloader(true)} 
                 imagesReady={imagesReady} 
                 loadProgress={loadProgress} 
