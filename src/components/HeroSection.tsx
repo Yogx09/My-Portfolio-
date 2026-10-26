@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import RetroWorkstation3DCanvas from "./retro/RetroWorkstation3DCanvas";
 import { retroAudio } from "./retro/RetroAudio";
 import { NavTab } from "./retro/RetroTerminalOS";
-import WavingPortfolioLanding from "@/components/ui/waving-portfolio-landing";
+import { Quote } from "@/components/ui/demo";
 
 export { type NavTab } from "./retro/RetroTerminalOS";
 
@@ -103,28 +103,9 @@ export default function HeroSection({
             </svg>
           </div>
 
-          {/* The Main Interactive Waving Poster Component - SIZED TO SCREEN */}
-          <div className="w-full flex-1 min-h-[300px] max-h-[55vh] relative overflow-hidden flex items-center justify-center">
-            <WavingPortfolioLanding
-              name="KEDHARESWER"
-              year="2026"
-              roles={["GRAPHIC DESIGNER", "ILLUSTRATOR"]}
-              lettersLeft={["P", "F"]}
-              giantLetter="O"
-              lettersRight={["RT", "LIO"]}
-              title="Portfolio"
-              signature="KEDHA/RESWER"
-              greeting="Hi there!"
-              accent="#e5262c"
-              paper="transparent"
-              ink="#141414"
-              showCornerDice={false}
-              showSignature={false}
-              showDoodles={true}
-              height="100%"
-              intro={true}
-              className="w-full h-full wpl-hero-mode"
-            />
+          {/* The Main Interactive Quote with Dot Pattern (Beside the Computer) */}
+          <div className="w-full flex-1 min-h-[300px] max-h-[58vh] relative overflow-hidden flex items-center justify-center py-2">
+            <Quote compact={true} className="rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]" />
           </div>
 
           {/* Action Buttons underneath Poster */}
